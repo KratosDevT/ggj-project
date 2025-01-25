@@ -63,6 +63,8 @@ Material:
     m_Ints: []
     m_Floats:
     - _EnableExternalAlpha: 0
+    - _Outline_Durezza: 0.1
+    - _Outline_Spessore: 5.83
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ZWrite: 0
