@@ -11,20 +11,30 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private float[] backGroundLevels;
     [SerializeField] private float backGroundVelocity;
 
+    private static GameManager instance;
+
     private static float currentHight = 0;
     private static float playerVelocityX;
+    private static int playerLife = 10;
+
+    private BackgroundController backgroundController;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
-        //backGroundGameObject set velocity
+        instance = this;
+
+        backgroundController = backGroundGameObject.GetComponent<BackgroundController>();
         //get player velocity;
     }
 
-    // Update is called once per frame
     void Update() {
         currentHight += Time.deltaTime * backGroundVelocity;
 
-        AudioManager.Play(getCurrentStage());
+        backgroundController.setSpeed(backGroundVelocity);
+
+        AudioManager.Play(0);
+
+        if(getCurrentStage() == backGroundLevels.Length) GameEndWin();
 
 
     }
@@ -35,6 +45,26 @@ public class GameManager : MonoBehaviour {
 
     public static float getPlayerVelocityX() {
         return playerVelocityX;
+    }
+
+    public static int PlayerIsHit() {
+        if (--playerLife < 1) GameEnd();
+
+        if (playerLife % 2 == 0) AudioManager.Play(playerLife % 2);
+
+        return playerLife;
+    }
+
+    private static void GameEnd() {
+
+    }
+
+    private static void GameEndWin() {
+
+    }
+
+    public static int getDifficulty() {
+        return instance.getCurrentStage();
     }
 
     private int getCurrentStage() {
