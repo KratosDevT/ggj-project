@@ -148,9 +148,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69ee79496deabd94eab7137191a32692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxY: -10
-  speed: 0.1
-  startPositionY: 0
+  maxY: -1000
+  speed: 1
+  startPositionY: 20
   currentPositionY: 10
 --- !u!4 &145289440
 Transform:
@@ -161,8 +161,8 @@ Transform:
   m_GameObject: {fileID: 145289438}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.03, z: 10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 20, z: 10}
+  m_LocalScale: {x: 0.7, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 946069251}
