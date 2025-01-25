@@ -5,23 +5,28 @@ using UnityEngine.Scripting.APIUpdating;
 
 public class FirstObstacle : BaseObstacle
 {
-    private float firstObstaclespeed; //specific speed of the FirstObstacle
+    private CircleCollider2D circleCollider; //circle collider of FirstObstacle
+    private float movement;
 
     void Start()
     {
-        firstObstaclespeed = base.getSpeed() * 1.5f; //it depends from the speed of the BaseObstacle
+        obstacleSpeed = speed * 1.5f; //it depends from the speed of the BaseObstacle
+        circleCollider = GetComponent<CircleCollider2D>();
+        movement = -obstacleSpeed * Time.deltaTime;
     }
+
     void Update()
     {
         Move();
     }
+
     protected override void  Move()
     {
-        float movement = -firstObstaclespeed * Time.deltaTime;
         transform.Translate(0, movement, 0);
     }
-    public override float getSpeed()
+
+    public override float getSize() //the difference between the center of the collider and the edge on the x-axis
     {
-        return firstObstaclespeed;
+        return circleCollider.radius;
     }
 }

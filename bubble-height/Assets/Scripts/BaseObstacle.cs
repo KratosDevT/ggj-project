@@ -4,11 +4,15 @@ public abstract class BaseObstacle : MonoBehaviour
 {
     [SerializeField]
     protected float speed = 2f;
-    protected virtual void Move(){}
 
-    public virtual float getSpeed()
+    protected float obstacleSpeed; //specific speed of the specificObstacle
+    protected abstract void Move();
+
+    public abstract float getSize();
+
+    public float getSpeed()
     {
-        return speed;
+        return obstacleSpeed;
     }
 }
 
