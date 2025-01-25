@@ -42,12 +42,10 @@ public class SpawnerScript : MonoBehaviour {
         if (!canSpawn) return;
 
         waitToSpawn -= Time.deltaTime;
-        Debug.Log("CiaoDO");
 
         if (waitToSpawn > 0.0f) return;
 
         int currentLevel = 0;//todo: get level 
-        Debug.Log("Ciao2");
 
         int obstacleLen = obstacles[currentLevel].Length;
 
@@ -58,8 +56,6 @@ public class SpawnerScript : MonoBehaviour {
         while (obstacleGameObject == lastSpawnedGameObject) {
             obstacleGameObject = obstacles[currentLevel][Random.Range(0, obstacleLen - 1)];
         }*/
-
-        Debug.Log("Ciao1");
 
         GameObject obstacleSpawed = Instantiate(obstacleGameObject);
 
@@ -72,8 +68,8 @@ public class SpawnerScript : MonoBehaviour {
         const float obstacleSize = 0.3f;
         const float lastSpawnedSize = obstacleSize;
 
-        float leftMargin = Camera.main.transform.position.x - Camera.main.orthographicSize + obstacleSize;
-        float rightMargin = Camera.main.transform.position.x + Camera.main.orthographicSize - obstacleSize;
+        float leftMargin = Camera.main.transform.position.x - (Camera.main.orthographicSize * Camera.main.aspect) + obstacleSize;
+        float rightMargin = Camera.main.transform.position.x + (Camera.main.orthographicSize * Camera.main.aspect) - obstacleSize;
 
         if (lastSpawnedGameObject != null) {
             lastSpawned = lastSpawnedGameObject.GetComponent<BaseObstacle>();
@@ -85,8 +81,6 @@ public class SpawnerScript : MonoBehaviour {
             xMin = Convert.ToInt32(possibleDistance <= obstacleSize) * (characterPositionX - obstacleSize),
             xMax = Convert.ToInt32(possibleDistance <= obstacleSize) * (characterPositionX + obstacleSize)
         };
-
-        Debug.Log("Ciao");
 
         float random = Random.Range(leftMargin, rightMargin);
 
