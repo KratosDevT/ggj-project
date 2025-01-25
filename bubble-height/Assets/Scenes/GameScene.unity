@@ -199,9 +199,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b1f641d617ecb44a29c28f01dfe8ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
-  leftBound: -2
-  rightBound: 2
+  speed: 14
+  leftBound: -3
+  rightBound: 3
 --- !u!50 &456940376
 Rigidbody2D:
   serializedVersion: 5
@@ -1266,12 +1266,13 @@ MonoBehaviour:
   backGroundGameObject: {fileID: 145289438}
   audioManagerGameObject: {fileID: 1496535856}
   spawnerGameObject: {fileID: 1680627989}
-  backGroundLevels:
+  bgHighLevels:
   - 23
   - 6
   - -19
   - -40
   backGroundVelocity: 0.3
+  stage: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
