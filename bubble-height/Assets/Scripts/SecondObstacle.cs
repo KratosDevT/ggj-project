@@ -1,19 +1,21 @@
+using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class SecondObstacle : BaseObstacle
 {
-    private BoxCollider2D boxCollider;
+    private CircleCollider2D circleCollider;
     private float movement;
+    private float direction = 1; //module of direction
 
-    [SerializeField]
-    Transform[] waypoints;
-    int waypoint_index = 0;
+    private float horizontalLimit = 10f; //temporary value of the camera border
+
     void Start()
     {
-        obstacleSpeed = speed * 0.5f; //it depends from the speed of the BaseObstacle
-        boxCollider = GetComponent<BoxCollider2D>();
-        movement = -obstacleSpeed * Time.deltaTime;
+        obstacleSpeed = speed * 0.25f; //it depends from the speed of the BaseObstacle
+        circleCollider = GetComponent<CircleCollider2D>();
+        movement = obstacleSpeed * Time.deltaTime;
+        direction = Math.Sign(transform.position.x) * -1; //change based on the spawn position
     }
     void Update()
     {
@@ -21,19 +23,18 @@ public class SecondObstacle : BaseObstacle
     }
     protected override void  Move()
     {
-        transform.position = Vector2.MoveTowards(transform.position, waypoints[waypoint_index].transform.position, movement);
-
-        if(transform.position == waypoints[waypoint_index].transform.position)
+        Vector3 nextPosition = transform.position;
+        nextPosition.x += movement * direction * 2; //changing the x axis for the double of the y axis
+        nextPosition.y += -movement; //changing the y axis
+        if(nextPosition.x > horizontalLimit || nextPosition.x < -horizontalLimit) //changing the direction based on the spawner position
         {
-            ++ waypoint_index;
+            direction *= -1;
         }
-        if(waypoint_index == waypoints.Length)
-        {
-            return;
-        }
+        transform.position = Vector3.Lerp(transform.position, nextPosition, 0.5f);
     }
-    public override float getSize()
+
+    public override float GetSize()
     {
-        return boxCollider.size.x * transform.localScale.x;
+        return circleCollider.radius;
     }
 }

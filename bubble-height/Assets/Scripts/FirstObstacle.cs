@@ -12,7 +12,7 @@ public class FirstObstacle : BaseObstacle
     {
         obstacleSpeed = speed * 1.5f; //it depends from the speed of the BaseObstacle
         circleCollider = GetComponent<CircleCollider2D>();
-        movement = -obstacleSpeed * Time.deltaTime;
+        movement = obstacleSpeed * Time.deltaTime;
     }
 
     void Update()
@@ -22,10 +22,10 @@ public class FirstObstacle : BaseObstacle
 
     protected override void  Move()
     {
-        transform.Translate(0, movement, 0);
+        transform.Translate(0, -movement, 0);
     }
 
-    public override float getSize() //the difference between the center of the collider and the edge on the x-axis
+    public override float GetSize() //the difference between the center of the collider and the edge on the x-axis
     {
         return circleCollider.radius;
     }
