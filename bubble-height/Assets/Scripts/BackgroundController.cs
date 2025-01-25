@@ -2,18 +2,31 @@ using UnityEngine;
 
 public class BackgroundController : MonoBehaviour
 {
-    public float maxY = 30f;
-    public float speed = 0.2f;
-    public float currentPositionY = 0.0f;
-    // Update is called once per frame
-    void Update()
+    [SerializeField]
+    private float maxY = -10.0f;
+    [SerializeField]
+    private float speed = 3.0f;
+    [SerializeField]
+    private float startPositionY = 0.0f;
+
+    [Header("In visualizzazione")]
+    [SerializeField]
+    private float currentPositionY;
+
+    private void Start()
     {
-        currentPositionY += speed * Time.deltaTime;
+        currentPositionY = startPositionY;
+    }
+
+
+    private void Update()
+    {
+        currentPositionY -= speed * Time.deltaTime;
         this.gameObject.transform.position = new Vector3(0, currentPositionY, 0);
-        if (currentPositionY > maxY)
+        if (currentPositionY < maxY)
         {
-            this.gameObject.transform.position = new Vector3(0, 0, 0);
-            currentPositionY = 0;
+            this.gameObject.transform.position = new Vector3(0, startPositionY, 0);
+            currentPositionY = startPositionY;
         }
     }
 }
