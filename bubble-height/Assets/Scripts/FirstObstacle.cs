@@ -10,7 +10,7 @@ public class FirstObstacle : BaseObstacle
 
     void Start()
     {
-        obstacleSpeed = speed * 1.3f; //it depends from the speed of the BaseObstacle
+        obstacleSpeed = speed * 0.9f; //it depends from the speed of the BaseObstacle
     }
 
     void Update()
