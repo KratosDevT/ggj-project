@@ -13,7 +13,7 @@ public class SpawnerScript : MonoBehaviour {
     [SerializeField] private GameObject[] obstaclesEasy;
     private GameObject[][] obstacles;
     [SerializeField] private bool canSpawn;
-    private float waitToSpawn = 0.0f;
+    [SerializeField] private float waitToSpawn = 1.0f;
     private GameObject lastSpawnedGameObject = null;
     Range lastRange = new Range() {
         xMin = -5000,
@@ -107,7 +107,7 @@ public class SpawnerScript : MonoBehaviour {
             xMax = obstacleSpawed.transform.position.x + lastSpawnedSize
         };
 
-        waitToSpawn = 5;
+        waitToSpawn = 1;
     }
 
 
