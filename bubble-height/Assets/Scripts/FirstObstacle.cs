@@ -10,8 +10,7 @@ public class FirstObstacle : BaseObstacle
 
     void Start()
     {
-        obstacleSpeed = speed * 1.5f; //it depends from the speed of the BaseObstacle
-        movement = obstacleSpeed * Time.deltaTime;
+        obstacleSpeed = speed * 1.3f; //it depends from the speed of the BaseObstacle
     }
 
     void Update()
@@ -21,6 +20,7 @@ public class FirstObstacle : BaseObstacle
 
     protected override void  Move()
     {
+        movement = obstacleSpeed * Time.deltaTime;
         transform.Translate(0, -movement, 0);
     }
 

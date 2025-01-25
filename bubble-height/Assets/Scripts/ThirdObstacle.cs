@@ -1,28 +1,30 @@
-using System;
 using UnityEngine;
-using UnityEngine.UIElements;
+using System;
 
-public class SecondObstacle : BaseObstacle
+public class ThirdObstacle : BaseObstacle
 {
     private float movement;
+
     private float direction = 1; //module of direction
 
     private float horizontalLimit;
 
     void Start()
     {
-        obstacleSpeed = speed * 1.5f; //it depends from the speed of the BaseObstacle
+        obstacleSpeed = speed * 1.1f; //it depends from the speed of the BaseObstacle
+        movement = obstacleSpeed * Time.deltaTime;
         direction = Math.Sign(transform.position.x) * -1; //change based on the spawn position
-        horizontalLimit = (Camera.main.orthographicSize * Camera.main.aspect) + Camera.main.transform.position.x - 0.75f; //limit bounded to camera edges
+        horizontalLimit = 2f;
     }
+
     void Update()
     {
         Move();
     }
+
     protected override void  Move()
     {
         Vector3 nextPosition = transform.position;
-        movement = obstacleSpeed * Time.deltaTime;
         nextPosition.x += movement * direction * 2; //changing the x axis for the double of the y axis
         nextPosition.y += -movement; //changing the y axis
         if(nextPosition.x > horizontalLimit || nextPosition.x < -horizontalLimit) //changing the direction based on the spawner position
@@ -32,7 +34,7 @@ public class SecondObstacle : BaseObstacle
         transform.position = Vector3.Lerp(transform.position, nextPosition, 0.5f);
     }
 
-    public override float GetSize()
+    public override float GetSize() //the difference between the center of the collider and the edge on the x-axis
     {
         return GetComponent<CircleCollider2D>().radius;
     }
