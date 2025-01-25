@@ -4,7 +4,6 @@ using UnityEngine.UIElements;
 
 public class SecondObstacle : BaseObstacle
 {
-    private CircleCollider2D circleCollider;
     private float movement;
     private float direction = 1; //module of direction
 
@@ -13,7 +12,6 @@ public class SecondObstacle : BaseObstacle
     void Start()
     {
         obstacleSpeed = speed * 0.25f; //it depends from the speed of the BaseObstacle
-        circleCollider = GetComponent<CircleCollider2D>();
         movement = obstacleSpeed * Time.deltaTime;
         direction = Math.Sign(transform.position.x) * -1; //change based on the spawn position
     }
@@ -35,6 +33,6 @@ public class SecondObstacle : BaseObstacle
 
     public override float GetSize()
     {
-        return circleCollider.radius;
+        return GetComponent<CircleCollider2D>().radius;
     }
 }

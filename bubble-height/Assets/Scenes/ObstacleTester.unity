@@ -131,6 +131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ago
       objectReference: {fileID: 0}
+    - target: {fileID: 6255789770647282977, guid: 373dce8ccf8be514ca74562b3a81be04, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6744939831069278107, guid: 373dce8ccf8be514ca74562b3a81be04, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -176,6 +180,54 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 373dce8ccf8be514ca74562b3a81be04, type: 3}
+--- !u!1 &1066678658
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1066678660}
+  - component: {fileID: 1066678659}
+  m_Layer: 0
+  m_Name: Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1066678659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066678658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60021176464946040bafeda1fedc5e8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstaclesEasy:
+  - {fileID: 6255789770647282977, guid: 373dce8ccf8be514ca74562b3a81be04, type: 3}
+  - {fileID: 2437864055259887606, guid: 5669eb94a40434f438a6af14ce2bad9b, type: 3}
+  canSpawn: 0
+--- !u!4 &1066678660
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066678658}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.4253789, y: 0.13050671, z: 0.046641912}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2103104629
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,6 +377,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Durian
       objectReference: {fileID: 0}
+    - target: {fileID: 2437864055259887606, guid: 5669eb94a40434f438a6af14ce2bad9b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3071130442746113356, guid: 5669eb94a40434f438a6af14ce2bad9b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.57
@@ -377,3 +433,4 @@ SceneRoots:
   - {fileID: 2103104633}
   - {fileID: 610120015}
   - {fileID: 321952009365328568}
+  - {fileID: 1066678660}

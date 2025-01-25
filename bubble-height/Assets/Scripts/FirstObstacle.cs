@@ -5,13 +5,11 @@ using UnityEngine.Scripting.APIUpdating;
 
 public class FirstObstacle : BaseObstacle
 {
-    private CircleCollider2D circleCollider; //circle collider of FirstObstacle
     private float movement;
 
     void Start()
     {
         obstacleSpeed = speed * 1.5f; //it depends from the speed of the BaseObstacle
-        circleCollider = GetComponent<CircleCollider2D>();
         movement = obstacleSpeed * Time.deltaTime;
     }
 
@@ -27,6 +25,6 @@ public class FirstObstacle : BaseObstacle
 
     public override float GetSize() //the difference between the center of the collider and the edge on the x-axis
     {
-        return circleCollider.radius;
+        return GetComponent<CircleCollider2D>().radius;
     }
 }
