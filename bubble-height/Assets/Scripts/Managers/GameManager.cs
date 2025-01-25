@@ -17,16 +17,20 @@ public class GameManager : MonoBehaviour {
     private static float playerVelocityX;
     private static int playerLife = 10;
 
+    private BackgroundController backgroundController;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
         instance = this;
 
-        backGroundGameObject.GetComponent<BackgroundController>().setSpeed(backGroundVelocity);
+        backgroundController = backGroundGameObject.GetComponent<BackgroundController>();
         //get player velocity;
     }
 
     void Update() {
         currentHight += Time.deltaTime * backGroundVelocity;
+
+        backgroundController.setSpeed(backGroundVelocity)
 
         AudioManager.Play(0);
 
