@@ -6,6 +6,7 @@ public abstract class BaseObstacle : MonoBehaviour
     protected float speed = 2f;
 
     protected float obstacleSpeed; //specific speed of the specificObstacle
+    
     protected abstract void Move();
 
     public abstract float getSize();
