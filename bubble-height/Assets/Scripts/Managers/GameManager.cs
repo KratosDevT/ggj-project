@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour {
     void Update() {
         currentHight += Time.deltaTime * backGroundVelocity;
 
-        audioSource.Play(audioManager.getAudioClip(getCurrentStage());
+       // audioSource.Play(audioManager.getAudioClip(getCurrentStage());
 
 
     }
