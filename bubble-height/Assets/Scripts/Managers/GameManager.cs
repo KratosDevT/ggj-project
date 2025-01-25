@@ -10,9 +10,6 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private float[] backGroundLevels;
     [SerializeField] private float backGroundVelocity;
 
-    private static AudioSource audioSource;
-    private static AudioManager audioManager;
-
     private static float currentHight = 0;
     private static float playerVelocityX;
 
@@ -20,15 +17,13 @@ public class GameManager : MonoBehaviour {
     void Start() {
         //backGroundGameObject set velocity
         //get player velocity;
-        audioSource = audioManagerGameObject.GetComponent<AudioSource>();
-        audioManager = audioManagerGameObject.GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
     void Update() {
         currentHight += Time.deltaTime * backGroundVelocity;
 
-       // audioSource.Play(audioManager.getAudioClip(getCurrentStage());
+        AudioManager.Play(getCurrentStage());
 
 
     }
