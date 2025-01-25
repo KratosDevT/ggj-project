@@ -13,19 +13,23 @@ public class BackgroundController : MonoBehaviour
     [SerializeField]
     private float currentPositionY;
 
+    private float zPos;
+
     private void Start()
     {
         currentPositionY = startPositionY;
+        zPos = this.gameObject.transform.position.z;
+
     }
 
 
     private void Update()
     {
         currentPositionY -= speed * Time.deltaTime;
-        this.gameObject.transform.position = new Vector3(0, currentPositionY, 0);
+        this.gameObject.transform.position = new Vector3(0, currentPositionY, zPos);
         if (currentPositionY < maxY)
         {
-            this.gameObject.transform.position = new Vector3(0, startPositionY, 0);
+            this.gameObject.transform.position = new Vector3(0, startPositionY, zPos);
             currentPositionY = startPositionY;
         }
     }
