@@ -5,7 +5,6 @@ public class GameManager : MonoBehaviour {
 
     [SerializeField] private GameObject playerGameObject;
     [SerializeField] private GameObject backGroundGameObject;
-    [SerializeField] private GameObject audioManagerGameObject;
     [SerializeField] private GameObject spawnerGameObject;
 
     [SerializeField] private float[] backGroundLevels;
@@ -56,11 +55,18 @@ public class GameManager : MonoBehaviour {
     }
 
     private static void GameEnd() {
-
+        AudioManager.Play((int) AudioManager.Song.loose);
     }
 
     private static void GameEndWin() {
+        instance.StopGame();
+        AudioManager.Play((int) AudioManager.Song.win);
+    }
 
+    private void StopGame() {
+        spawnerGameObject.GetComponent<SpawnerScript>().disableSpawn();
+        backGroundGameObject.SetActive(false);
+        playerGameObject.SetActive(false);
     }
 
     public static int getDifficulty() {

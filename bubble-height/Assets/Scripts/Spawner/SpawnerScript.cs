@@ -65,7 +65,7 @@ public class SpawnerScript : MonoBehaviour {
         BaseObstacle lastSpawned = null;
 
         const float characterPositionX = 0;
-        const float characterVelocityX = 0.2f;
+        float characterVelocityX = GameManager.getPlayerVelocityX();
         float obstacleVelocityY = obstacle.GetSpeed();
         float obstacleSize = obstacle.GetSize();
         float lastSpawnedSize = 0;
