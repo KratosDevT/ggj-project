@@ -1,12 +1,12 @@
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class SpawnerScript : MonoBehaviour {
 
-    [SerializeField]
-    private Dictionary<int, GameObject[]> obstacles = new Dictionary<int, GameObject[]>();
-    private bool canSpawn;
-    private float waitToSpawn;
+    [SerializeField] private GameObject[] obstaclesEasy;
+    private bool canSpawn = true;
+    private float waitToSpawn = 0.0f;
 
     // Update is called once per frame
     void Update() {
@@ -19,11 +19,11 @@ public class SpawnerScript : MonoBehaviour {
 
         int currentLevel = 0;//todo: get level 
 
-        int obstacleLen = obstacles[currentLevel].Length;
+        int obstacleLen = obstaclesEasy.Length;
 
         int randomNumber = Random.Range(0, obstacleLen);
 
-        GameObject spawnedObstacle = Instantiate(obstacles[currentLevel][randomNumber]);
+        GameObject spawnedObstacle = Instantiate(obstaclesEasy[randomNumber]);
 
         int randomPosition = Random.Range(0, 0); //left right x position limit
 
