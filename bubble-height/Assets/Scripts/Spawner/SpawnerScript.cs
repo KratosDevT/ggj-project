@@ -49,12 +49,14 @@ public class SpawnerScript : MonoBehaviour {
 
         int obstacleLen = obstacles[currentLevel].Length;
 
-        GameObject obstacleGameObject = null;
+        GameObject obstacleGameObject = lastSpawnedGameObject;
 
         obstacleGameObject = obstacles[currentLevel][Random.Range(0, obstacleLen - 1)];
-        /*
-        while (obstacleGameObject == lastSpawnedGameObject) {
-            obstacleGameObject = obstacles[currentLevel][Random.Range(0, obstacleLen - 1)];
+        
+        /*while (obstacleGameObject == lastSpawnedGameObject) {
+            int randomObstacle = Random.Range(0, obstacleLen);
+            Debug.Log(randomObstacle);
+            obstacleGameObject = obstacles[currentLevel][randomObstacle];
         }*/
 
         GameObject obstacleSpawed = Instantiate(obstacleGameObject);

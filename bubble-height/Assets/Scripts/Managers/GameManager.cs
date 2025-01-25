@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private GameObject playerGameObject;
     [SerializeField] private GameObject backGroundGameObject;
     [SerializeField] private GameObject audioManagerGameObject;
+    [SerializeField] private GameObject spawnerGameObject;
 
     [SerializeField] private float[] backGroundLevels;
     [SerializeField] private float backGroundVelocity;

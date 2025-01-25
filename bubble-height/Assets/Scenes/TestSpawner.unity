@@ -286,7 +286,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstaclesEasy:
-  - {fileID: 919132149155446097, guid: 8731cc7ad3ee09a4299dc2ad20f9dd0f, type: 3}
+  - {fileID: 6255789770647282977, guid: 373dce8ccf8be514ca74562b3a81be04, type: 3}
+  - {fileID: 2437864055259887606, guid: 5669eb94a40434f438a6af14ce2bad9b, type: 3}
+  canSpawn: 1
 --- !u!4 &872046560
 Transform:
   m_ObjectHideFlags: 0
