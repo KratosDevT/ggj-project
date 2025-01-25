@@ -10,19 +10,17 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField]
     private Camera cameraObject;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    /* void Start()
-     {
+    private void Start()
+    {
+        Debug.Log(cameraObject);
 
-     }*/
-
-    // Update is called once per frame
+    }
     void Update()
     {
         float horizontalMovement = Input.GetAxisRaw("Horizontal");
         //Character movement letf/right
         pos.x = transform.position.x + horizontalMovement * speed * Time.deltaTime;
-        pos.x = Mathf.Clamp(pos.x, -cameraObject.orthographicSize, cameraObject.orthographicSize);
+        pos.x = Mathf.Clamp(pos.x, -2.5f, 2.5f);
         transform.position = pos;
     }
 }
