@@ -7,13 +7,14 @@ public class SecondObstacle : BaseObstacle
     private float movement;
     private float direction = 1; //module of direction
 
-    private float horizontalLimit = 10f; //temporary value of the camera border
+    private float horizontalLimit;//= (Camera.main.orthographicSize * Camera.main.aspect) + Camera.main.transform.position.x; //temporary value of the camera border
 
     void Start()
     {
-        obstacleSpeed = speed * 0.25f; //it depends from the speed of the BaseObstacle
+        obstacleSpeed = speed * 0.5f; //it depends from the speed of the BaseObstacle
         movement = obstacleSpeed * Time.deltaTime;
         direction = Math.Sign(transform.position.x) * -1; //change based on the spawn position
+        horizontalLimit = (Camera.main.orthographicSize * Camera.main.aspect) + Camera.main.transform.position.x;
     }
     void Update()
     {
