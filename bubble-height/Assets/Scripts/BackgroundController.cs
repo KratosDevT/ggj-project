@@ -19,7 +19,6 @@ public class BackgroundController : MonoBehaviour
     {
         currentPositionY = startPositionY;
         zPos = this.gameObject.transform.position.z;
-
     }
 
 
@@ -34,7 +33,13 @@ public class BackgroundController : MonoBehaviour
         }
     }
 
-    public void setSpeed(float speed) {
+    public void setSpeed(float speed)
+    {
         this.speed = speed;
+    }
+
+    public float getCurrentHeight()
+    {
+        return currentPositionY;
     }
 }
