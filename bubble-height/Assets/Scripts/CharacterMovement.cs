@@ -7,20 +7,21 @@ public class CharacterMovement : MonoBehaviour
     private float speed = 1.0f;
     private Vector3 pos;
 
-    [SerializeField]
-    private Camera cameraObject;
-
-    private void Start()
+    //private GameObject cameraObject; 
+    
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+   /* void Start()
     {
-        Debug.Log(cameraObject);
+        
+    }*/
 
-    }
-    void Update()
+  private void Update()
     {
-        float horizontalMovement = Input.GetAxisRaw("Horizontal");
+        float horizontalMovement = Input.GetAxis("Horizontal");
         //Character movement letf/right
         pos.x = transform.position.x + horizontalMovement * speed * Time.deltaTime;
-        pos.x = Mathf.Clamp(pos.x, -2.5f, 2.5f);
+        pos.x = Mathf.Clamp(pos.x, -3.5f, 3.5f);
         transform.position = pos;
     }
+   
 }
