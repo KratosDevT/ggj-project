@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour {
     void Update() {
         currentHight += Time.deltaTime * backGroundVelocity;
 
-        backgroundController.setSpeed(backGroundVelocity)
+        backgroundController.setSpeed(backGroundVelocity);
 
         AudioManager.Play(0);
 

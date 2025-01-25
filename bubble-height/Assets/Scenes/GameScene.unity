@@ -1266,7 +1266,7 @@ MonoBehaviour:
   audioManagerGameObject: {fileID: 1496535856}
   spawnerGameObject: {fileID: 1680627989}
   backGroundLevels: []
-  backGroundVelocity: 25
+  backGroundVelocity: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
