@@ -5,21 +5,25 @@ using UnityEngine.Scripting.APIUpdating;
 
 public class FirstObstacle : BaseObstacle
 {
-    [SerializeField]
-    private float speed = 2f;
+    private float y = 0f;
 
-    float y = 0f;
+    private float firstObstaclespeed;
+    
+    void Start()
+    {
+        firstObstaclespeed = base.getSpeed();
+    }
     void Update()
     {
         Move();
     }
     protected override void  Move()
     {
-        y += speed * Time.deltaTime;
+        y += firstObstaclespeed * Time.deltaTime;
         transform.position = new Vector2(transform.position.x, -y);
     }
-    public float getSpeed()
+    public override float getSpeed()
     {
-        return speed;
+        return firstObstaclespeed;
     }
 }
