@@ -996,7 +996,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fc2957489a0b9f4f8ec0c5f205b923f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6.06
+  speed: 1.8
 --- !u!1 &1875607560
 GameObject:
   m_ObjectHideFlags: 0
@@ -1100,7 +1100,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  cameraObject: {fileID: 519420031}
 --- !u!61 &1875607564
 BoxCollider2D:
   m_ObjectHideFlags: 0
