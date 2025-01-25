@@ -33,4 +33,8 @@ public class BackgroundController : MonoBehaviour
             currentPositionY = startPositionY;
         }
     }
+
+    public void setSpeed(float speed) {
+        this.speed = speed;
+    }
 }
