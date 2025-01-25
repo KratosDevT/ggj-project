@@ -19,10 +19,8 @@ public class GameManager : MonoBehaviour {
 
     private BackgroundController backgroundController;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
         instance = this;
-
         backgroundController = backGroundGameObject.GetComponent<BackgroundController>();
         //get player velocity;
     }
