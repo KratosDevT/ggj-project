@@ -4,21 +4,20 @@ public class ThirdObstacle : BaseObstacle
 {
     private float movement;
 
-    private float frequency = 2f; // Frequenza dell'oscillazione
-    private float amplitude = 0.5f; // Ampiezza dell'oscillazione
-    private float verticalSpeedMultiplier = 0.5f; // Fattore per il movimento verso il basso
+    private float frequency = 2f; //oscillation frequency
+    private float amplitude = 0.5f; //oscillation amplitude
+    private float verticalSpeedMultiplier = 0.5f; //factor for downward movement
+    private float timeElapsed = 0f; //oscillation timer
 
-    private float timeElapsed = 0f; // Timer per l'oscillazione
-
-    private Vector3 initialRotation = new Vector3(-110f, 0f, 0f); // Rotazione iniziale dell'asset
-    private float maxTiltAngle = 15f; // Angolo massimo di inclinazione
+    private Vector3 initialRotation = new Vector3(-110f, 0f, 0f); //check of the initial rotation of the asset
+    private float maxTiltAngle = 20f; //maximum angle of inclination
 
     private float spawnPosition;
 
     void Start()
     {
-        obstacleSpeed = speed * 0.8f; // Dipende dalla velocità della classe base
-        transform.rotation = Quaternion.Euler(initialRotation); // Imposta la rotazione iniziale
+        obstacleSpeed = speed * 0.8f; //it depends on the speed of the base class
+        transform.rotation = Quaternion.Euler(initialRotation); //set the initial rotation
         spawnPosition = transform.position.x;
     }
 
@@ -29,31 +28,29 @@ public class ThirdObstacle : BaseObstacle
 
     protected override void Move()
     {
-        // Incrementa il tempo per calcolare l'oscillazione
-        timeElapsed += Time.deltaTime;
+        timeElapsed += Time.deltaTime; //increase the time to calculate the oscillation
 
         Vector3 nextPosition = transform.position;
 
-        // Oscillazione sull'asse x
+        //oscillation on the x axis
         nextPosition.x = Mathf.Sin(timeElapsed * frequency) * amplitude + spawnPosition;
 
-        // Movimento verso il basso
+        //oscillation on the y axis
         nextPosition.y -= obstacleSpeed * verticalSpeedMultiplier * Time.deltaTime;
 
-        // Rotazione basata sulla distanza dal centro (limite orizzontale)
-        float normalizedDistance = Mathf.Abs(nextPosition.x) / amplitude; // Valore normalizzato (0 al centro, 1 ai bordi)
-        float tiltAngle = Mathf.Lerp(0f, maxTiltAngle, normalizedDistance); // Interpolazione per l'angolo
+        //rotation based on distance from center (horizontal limit)
+        float normalizedDistance = Mathf.Abs(nextPosition.x) / amplitude; //normalized value (0 at the center, 1 at the edges)
+        float tiltAngle = Mathf.Lerp(0f, maxTiltAngle, normalizedDistance); //angle interpolation
 
-        // Inclinazione a destra o a sinistra in base alla posizione
+        //right or left rotation depending on the position
         Vector3 currentRotation = initialRotation + new Vector3(0f, 0f, nextPosition.x > 0 ? -tiltAngle : tiltAngle);
         transform.rotation = Quaternion.Euler(currentRotation);
 
-        // Aggiorna la posizione
         transform.position = Vector3.Lerp(transform.position, nextPosition, 0.4f);
     }
 
     public override float GetSize()
     {
-        return GetComponent<CircleCollider2D>().radius;
+        return GetComponent<CapsuleCollider2D>().size.x * transform.localScale.x;
     }
 }

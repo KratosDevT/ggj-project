@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour {
@@ -8,6 +9,11 @@ public class AudioManager : MonoBehaviour {
 
     private static AudioSource audioSource;
 
+
+    public enum Song {
+        win = 0,
+        loose = 1
+    }
 
     void Start() {
         audioSource = GetComponent<AudioSource>();
