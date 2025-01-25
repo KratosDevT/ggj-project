@@ -5,13 +5,11 @@ using UnityEngine.Scripting.APIUpdating;
 
 public class FirstObstacle : BaseObstacle
 {
-    private float y = 0f;
+    private float firstObstaclespeed; //specific speed of the FirstObstacle
 
-    private float firstObstaclespeed;
-    
     void Start()
     {
-        firstObstaclespeed = base.getSpeed();
+        firstObstaclespeed = base.getSpeed() * 1.5f; //it depends from the speed of the BaseObstacle
     }
     void Update()
     {
@@ -19,8 +17,8 @@ public class FirstObstacle : BaseObstacle
     }
     protected override void  Move()
     {
-        y += firstObstaclespeed * Time.deltaTime;
-        transform.position = new Vector2(transform.position.x, -y);
+        float movement = -firstObstaclespeed * Time.deltaTime;
+        transform.Translate(0, movement, 0);
     }
     public override float getSpeed()
     {
