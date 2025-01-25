@@ -1,10 +1,11 @@
 using UnityEngine;
 
-public class EdgeController : MonoBehaviour
-{
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
+public class EdgeController : MonoBehaviour{
+    
+
+
+
+    void Start() {
         
     }
 
