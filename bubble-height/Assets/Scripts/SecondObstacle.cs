@@ -11,10 +11,10 @@ public class SecondObstacle : BaseObstacle
 
     void Start()
     {
-        obstacleSpeed = speed * 0.5f; //it depends from the speed of the BaseObstacle
+        obstacleSpeed = speed * 1.5f; //it depends from the speed of the BaseObstacle
         movement = obstacleSpeed * Time.deltaTime;
         direction = Math.Sign(transform.position.x) * -1; //change based on the spawn position
-        horizontalLimit = (Camera.main.orthographicSize * Camera.main.aspect) + Camera.main.transform.position.x;
+        horizontalLimit = (Camera.main.orthographicSize * Camera.main.aspect) + Camera.main.transform.position.x - 0.75f;
     }
     void Update()
     {

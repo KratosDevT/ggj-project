@@ -5,6 +5,7 @@ using UnityEngine.Scripting.APIUpdating;
 
 public class FirstObstacle : BaseObstacle
 {
+
     private float movement;
 
     void Start()
