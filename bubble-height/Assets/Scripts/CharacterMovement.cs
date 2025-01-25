@@ -21,7 +21,7 @@ public class CharacterMovement : MonoBehaviour
         float horizontalMovement = Input.GetAxis("Horizontal");
         //Character movement letf/right
         pos.x = transform.position.x + horizontalMovement * speed * Time.deltaTime;
-        pos.x = Mathf.Clamp(pos.x, -5f, 5f);
+        pos.x = Mathf.Clamp(pos.x, -3.5f, 3.5f);
         transform.position = pos;
         
 
