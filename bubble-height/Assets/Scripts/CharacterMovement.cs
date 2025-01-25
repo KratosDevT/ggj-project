@@ -4,7 +4,9 @@ public class CharacterMovement : MonoBehaviour
 {
     //private float horizontal;
     [SerializeField]
-    private float speed = 100f;
+    private float speed = 1f;
+
+    Vector3 pos;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
    /* void Start()
@@ -15,10 +17,14 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horizontalMovement = Input.GetAxis("Horizontal"); //GetAxisRaw to check
 
-        transform.position = new Vector3(transform.position.x + horizontalMovement * speed * Time.deltaTime, 0, 0);
+        float horizontalMovement = Input.GetAxis("Horizontal");
+        //Character movement letf/right
+        pos.x = transform.position.x + horizontalMovement * speed * Time.deltaTime;
+        pos.x = Mathf.Clamp(pos.x, -5f, 5f);
+        transform.position = pos;
         
+
     }
 
     
