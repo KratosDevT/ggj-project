@@ -1,51 +1,52 @@
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
 
     [SerializeField] private GameObject playerGameObject;
     [SerializeField] private GameObject backGroundGameObject;
     [SerializeField] private GameObject audioManagerGameObject;
     [SerializeField] private GameObject spawnerGameObject;
 
-    [SerializeField] private float[] backGroundLevels;
+    [SerializeField] private float[] bgHighLevels;
     [SerializeField] private float backGroundVelocity;
+    [SerializeField] private int stage = 0;
 
     private static GameManager instance;
 
-    private static float currentHight = 0;
+    private static float currentHeight = 0;
     private static float playerVelocityX;
     private static int playerLife = 10;
 
     private BackgroundController backgroundController;
 
-    void Start() {
+    void Start()
+    {
         instance = this;
         backgroundController = backGroundGameObject.GetComponent<BackgroundController>();
         //get player velocity;
-    }
-
-    void Update() {
-        currentHight += Time.deltaTime * backGroundVelocity;
-
-        backgroundController.setSpeed(backGroundVelocity);
-
         AudioManager.Play(0);
-
-        if(getCurrentStage() == backGroundLevels.Length) GameEndWin();
-
-
     }
 
-    public static float getHight() {
-        return currentHight;
+    void Update()
+    {
+        backgroundController.setSpeed(backGroundVelocity);
+        currentHeight = backgroundController.getCurrentHeight();
+        Debug.Log("stage:" + getCurrentStage());
+        if (getCurrentStage() == bgHighLevels.Length)
+        {
+            GameEndWin();
+        }
     }
 
-    public static float getPlayerVelocityX() {
+    public static float getPlayerVelocityX()
+    {
         return playerVelocityX;
     }
 
-    public static int PlayerIsHit() {
+    public static int PlayerIsHit()
+    {
         if (--playerLife < 1) GameEnd();
 
         if (playerLife % 2 == 0) AudioManager.Play(playerLife % 2);
@@ -53,22 +54,26 @@ public class GameManager : MonoBehaviour {
         return playerLife;
     }
 
-    private static void GameEnd() {
+    private static void GameEnd()
+    {
 
     }
 
-    private static void GameEndWin() {
+    private static void GameEndWin()
+    {
 
     }
 
-    public static int getDifficulty() {
+    public static int getDifficulty()
+    {
         return instance.getCurrentStage();
     }
 
-    private int getCurrentStage() {
-        int stage = 0;
-        foreach(float backGroundLevel in backGroundLevels) {
-            if (backGroundLevel > currentHight) break;
+    private int getCurrentStage()
+    {
+        foreach (float bgHighLevel in bgHighLevels)
+        {
+            if (currentHeight > bgHighLevel) break;
             ++stage;
         }
         return stage;
