@@ -3,11 +3,11 @@ using UnityEngine;
 public class BackgroundController : MonoBehaviour
 {
     [SerializeField]
-    private float maxY = -10.0f;
+    private float maxY = -1000.0f;
     [SerializeField]
-    private float speed = 3.0f;
+    private float speed = 1.0f;
     [SerializeField]
-    private float startPositionY = 0.0f;
+    private float startPositionY = 20.0f;
 
     [Header("In visualizzazione")]
     [SerializeField]
