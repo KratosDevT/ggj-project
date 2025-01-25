@@ -7,13 +7,14 @@ public class CharacterMovement : MonoBehaviour
     private float speed = 1f;
     private Vector3 pos;
 
-    private GameObject cameraObject; 
-    
+    [SerializeField]
+    private GameObject cameraObject;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-   /* void Start()
-    {
-        
-    }*/
+    /* void Start()
+     {
+
+     }*/
 
     // Update is called once per frame
     void Update()
@@ -22,11 +23,11 @@ public class CharacterMovement : MonoBehaviour
         float horizontalMovement = Input.GetAxis("Horizontal");
         //Character movement letf/right
         pos.x = transform.position.x + horizontalMovement * speed * Time.deltaTime;
-        pos.x = Mathf.Clamp(pos.x, -cameraObject.x, cameraObject.x);
+        pos.x = Mathf.Clamp(pos.x, -cameraObject.transform.position.x, cameraObject.transform.position.x);
         transform.position = pos;
-        
+
 
     }
 
-    
+
 }
