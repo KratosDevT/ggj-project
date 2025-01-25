@@ -59,20 +59,21 @@ public class SpawnerScript : MonoBehaviour {
 
         GameObject obstacleSpawed = Instantiate(obstacleGameObject);
 
-        BaseObstacle obstacle = obstacleSpawed.GetComponent<FirstObstacle>();
-        BaseObstacle lastSpawned;
+        BaseObstacle obstacle = obstacleSpawed.GetComponent<BaseObstacle>();
+        BaseObstacle lastSpawned = null;
 
-        const float characterPositionX = 1;
+        const float characterPositionX = 0;
         const float characterVelocityX = 0.2f;
-        const float obstacleVelocityY = 0.2f;
-        const float obstacleSize = 0.3f;
-        const float lastSpawnedSize = obstacleSize;
+        float obstacleVelocityY = obstacle.GetSpeed();
+        float obstacleSize = obstacle.GetSize();
+        float lastSpawnedSize = 0;
 
         float leftMargin = Camera.main.transform.position.x - (Camera.main.orthographicSize * Camera.main.aspect) + obstacleSize;
         float rightMargin = Camera.main.transform.position.x + (Camera.main.orthographicSize * Camera.main.aspect) - obstacleSize;
 
         if (lastSpawnedGameObject != null) {
             lastSpawned = lastSpawnedGameObject.GetComponent<BaseObstacle>();
+            lastSpawnedSize = lastSpawned.GetSize();
         }
 
         float secondToReach = (transform.position.x - characterPositionX) / obstacleVelocityY;
