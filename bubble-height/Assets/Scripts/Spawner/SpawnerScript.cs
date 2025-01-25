@@ -51,7 +51,7 @@ public class SpawnerScript : MonoBehaviour {
 
         GameObject obstacleGameObject = lastSpawnedGameObject;
 
-        obstacleGameObject = obstacles[currentLevel][Random.Range(0, obstacleLen - 1)];
+        obstacleGameObject = obstacles[currentLevel][Random.Range(0, obstacleLen)];
         
         /*while (obstacleGameObject == lastSpawnedGameObject) {
             int randomObstacle = Random.Range(0, obstacleLen);
