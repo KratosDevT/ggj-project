@@ -10,11 +10,14 @@ public class SecondObstacle : BaseObstacle
 
     protected float movement;
 
+    protected Vector3 nextPosition;
+
     void Start()
     {
         obstacleSpeed = speed * 1.5f; //it depends from the speed of the BaseObstacle
         direction = Math.Sign(transform.position.x) * -1; //change based on the spawn position
         horizontalLimit = (Camera.main.orthographicSize * Camera.main.aspect) + Camera.main.transform.position.x - 0.75f; //limit bounded to camera edges
+        nextPosition = transform.position;
     }
     void Update()
     {
@@ -22,7 +25,6 @@ public class SecondObstacle : BaseObstacle
     }
     protected override void  Move()
     {
-        Vector3 nextPosition = transform.position;
         movement = obstacleSpeed * Time.deltaTime;
         nextPosition.x += movement * direction * 2f; //changing the x axis for the double of the y axis
         nextPosition.y += -movement * 2f; //changing the y axis
