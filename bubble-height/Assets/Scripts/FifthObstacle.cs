@@ -8,7 +8,8 @@ public class FifthObstacle : FirstObstacle
     private float angle = 0f; // Angolo corrente in radianti
     void Start()
     {
-        center = (transform.position.x, transform.position.y-radius, transform.position.z);
+        center = transform.position;
+        center.y -= radius;
     }
     void Update()
     {
