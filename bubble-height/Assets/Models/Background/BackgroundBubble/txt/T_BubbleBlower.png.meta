@@ -172,7 +172,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      T_BubbleBlower_0: -1615197250928502586
+      T_BubbleBlower_1: 4050832278630014724
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
