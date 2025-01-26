@@ -1,3 +1,5 @@
+using System;
+using System.ComponentModel;
 using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
@@ -38,7 +40,7 @@ public class CharacterMovement : MonoBehaviour
     {
         pos = new Vector3(0, transform.position.y, transform.position.z);
 
-        radius = GetComponent<CircleCollider2D>().radius;
+        radius = 2*(GetComponent<CircleCollider2D>().radius);
         Debug.Log(radius);
 
         //Insert the main bubble inside the first position of the array
@@ -79,36 +81,50 @@ public class CharacterMovement : MonoBehaviour
     {
         numberOfBubbles = howManyBubbles;
 
+
+        float segment = (2 * Mathf.PI) / (howManyBubbles-1);
+
+        //defineCoordinates();
+
         for (int i = 0; i < howManyBubbles; i++)
         {
-            //All sons of the parent gameObject CharacterMovement
-            bubbles[i] = Instantiate(bubblePrefab, bubblePosition[i], Quaternion.identity, transform);
 
+            float angle = segment * (i - 1);
+
+            float x = radius * Mathf.Cos(angle) * Convert.ToInt32(i!= 0);
+            float y = radius * Mathf.Sin(angle) * Convert.ToInt32(i != 0) ;
+
+            //All sons of the parent gameObject CharacterMovement
+            bubbles[i] = Instantiate(bubblePrefab, new Vector3(x, y, 0), Quaternion.identity, transform);
 
         }
 
+
+        GetComponent<CircleCollider2D>().radius = 3;
         return bubbles;
     }
 
     //Function called from GenerateBubbles once created all the bubbles
-    private void definteCoordinates()
+    /*private void defineCoordinates()
     {
         float x = 0f;
         float y = 0f;
         float angle = 0f;
 
         bubblePosition[0] = new Vector3(0,0,0);
+
+        float segment = 2 * Mathf.PI;
         
         for (int i = 1; i < numberOfBubbles; i++)
         {
-            angle = 2 * Mathf.PI * i;
+            angle = 
 
             x = radius * Mathf.Cos(angle);
             y = radius * Mathf.Sin(angle);
 
             bubblePosition[i] = new Vector3(x, y, 0);
         }
+    
+    }*/
 
-
-    }
 }
