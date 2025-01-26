@@ -14,7 +14,7 @@ public class SecondObstacle : BaseObstacle
 
     void Start()
     {
-        obstacleSpeed = speed * 1.5f; //it depends from the speed of the BaseObstacle
+        obstacleSpeed = speed * 1.3f; //it depends from the speed of the BaseObstacle
         direction = Math.Sign(transform.position.x) * -1; //change based on the spawn position
         horizontalLimit = (Camera.main.orthographicSize * Camera.main.aspect) + Camera.main.transform.position.x - 0.75f; //limit bounded to camera edges
         nextPosition = transform.position;

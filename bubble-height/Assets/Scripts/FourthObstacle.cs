@@ -10,7 +10,7 @@ public class FourthObstacle : SecondObstacle
 
     void Start()
     {
-        obstacleSpeed = speed * 1.5f; //it depends from the speed of the BaseObstacle
+        obstacleSpeed = speed * 1.2f; //it depends from the speed of the BaseObstacle
         nextPosition = transform.position;
         Quaternion rotation = transform.rotation;
         if(nextPosition.x > 0)
