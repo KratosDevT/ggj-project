@@ -149,9 +149,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxY: -1000
-  speed: 0.5
+  speedY: 1
+  speedX: 0
   startPositionY: 30
+  startPositionX: 0
   currentPositionY: 10
+  currentPositionX: 0
 --- !u!4 &145289440
 Transform:
   m_ObjectHideFlags: 0
@@ -346,8 +349,8 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 456940374}
-  m_BodyType: 2
-  m_Simulated: 0
+  m_BodyType: 0
+  m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
@@ -362,9 +365,9 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!58 &456940377
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -400,7 +403,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.01
+  m_Radius: 0.05
 --- !u!4 &456940378
 Transform:
   m_ObjectHideFlags: 0
@@ -1609,8 +1612,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60021176464946040bafeda1fedc5e8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstaclesStage0: []
-  obstaclesStage1: []
+  obstaclesStage0:
+  - {fileID: 6255789770647282977, guid: 373dce8ccf8be514ca74562b3a81be04, type: 3}
+  - {fileID: 2437864055259887606, guid: 5669eb94a40434f438a6af14ce2bad9b, type: 3}
+  obstaclesStage1:
+  - {fileID: 0}
   obstaclesStage2: []
   obstaclesStage3: []
   obstaclesStage4: []
