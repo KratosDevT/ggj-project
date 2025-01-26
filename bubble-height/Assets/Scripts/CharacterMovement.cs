@@ -10,7 +10,7 @@ public class CharacterMovement : MonoBehaviour
     private Vector3 pos;
 
     //Array that contains all the bubbles (Max 10 bubbles)
-    private GameObject[] bubbles = new GameObject [10];
+    private GameObject[] bubbles = new GameObject[10];
     private int numberOfBubbles = 10;
     private Vector3[] bubblePosition = new Vector3[10];   //.GetComponent<SphereCollider>().radius;
     private float radius = 0f;
@@ -39,7 +39,7 @@ public class CharacterMovement : MonoBehaviour
     {
         pos = new Vector3(0, transform.position.y, transform.position.z);
 
-        radius = 2*(GetComponent<CircleCollider2D>().radius);
+        radius = 2 * (GetComponent<CircleCollider2D>().radius);
         Debug.Log(radius);
 
         //Populate the bubbles array
@@ -58,28 +58,20 @@ public class CharacterMovement : MonoBehaviour
         pos = new Vector3(pos.x, transform.position.y, transform.position.z);
 
         transform.position = pos;
-        transform.Rotate(0,0,speed * Time.deltaTime);
+        transform.Rotate(0, 0, speed * Time.deltaTime);
 
     }
 
-    //Physics2D.BoxCastAll -> Funzione più otimizzata che va in base al tempo che imposti tu
+    //Physics2D.BoxCastAll -> Funzione piï¿½ otimizzata che va in base al tempo che imposti tu
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //If the timer is still going on, ignore the collision
-        if (timer > 0f) 
+        if (timer > 0f)
             return;
-        //Proceed with the actions caused by the collison
-        if (collision.gameObject.CompareTag("Obstacle"))
-        {
-            Debug.Log("Hit");
-            //Return of the remaining HP
-            GameManager.PlayerIsHit();
-            //Iterate the bubble array until you find the last one
-
             
-            
-        }
-          
+        Debug.Log("Hit");
+        //Return of the remaining HP
+        GameManager.PlayerIsHit();
     }
 
     private GameObject[] GenerateBubbles(int howManyBubbles)
@@ -87,7 +79,7 @@ public class CharacterMovement : MonoBehaviour
         //numberOfBubbles = howManyBubbles;
 
 
-        float segment = (2 * Mathf.PI) / (howManyBubbles-1);
+        float segment = (2 * Mathf.PI) / (howManyBubbles - 1);
 
 
         for (int i = 0; i < howManyBubbles; i++)
@@ -95,8 +87,8 @@ public class CharacterMovement : MonoBehaviour
 
             float angle = segment * (i - 1);
 
-            float x = radius * Mathf.Cos(angle) * Convert.ToInt32(i!= 0);
-            float y = radius * Mathf.Sin(angle) * Convert.ToInt32(i != 0) + transform.position.y ;
+            float x = radius * Mathf.Cos(angle) * Convert.ToInt32(i != 0);
+            float y = radius * Mathf.Sin(angle) * Convert.ToInt32(i != 0) + transform.position.y;
 
             //All sons of the parent gameObject CharacterMovement
             bubbles[i] = Instantiate(bubblePrefab, new Vector3(x, y, 0), Quaternion.identity, transform);
