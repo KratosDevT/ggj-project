@@ -96,7 +96,7 @@ public class CharacterMovement : MonoBehaviour
             float angle = segment * (i - 1);
 
             float x = radius * Mathf.Cos(angle) * Convert.ToInt32(i!= 0);
-            float y = radius * Mathf.Sin(angle) * Convert.ToInt32(i != 0) ;
+            float y = radius * Mathf.Sin(angle) * Convert.ToInt32(i != 0) + transform.position.y ;
 
             //All sons of the parent gameObject CharacterMovement
             bubbles[i] = Instantiate(bubblePrefab, new Vector3(x, y, 0), Quaternion.identity, transform);
