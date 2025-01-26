@@ -52,9 +52,9 @@ public class CharacterMovement : MonoBehaviour
         //Proceed with the actions caused by the collison
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            //Destroy fatto con l'update disabilitato per quella bolla
+            Debug.Log("Hit");
+            //Return of the remaining HP
             hp = GameManager.PlayerIsHit();
-            
             
         }
           
