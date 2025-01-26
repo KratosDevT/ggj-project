@@ -16,7 +16,7 @@ public class ThirdObstacle : BaseObstacle
 
     void Start()
     {
-        obstacleSpeed = speed * 0.8f; //it depends on the speed of the base class
+        obstacleSpeed = speed * 1.8f; //it depends on the speed of the base class
         transform.rotation = Quaternion.Euler(initialRotation); //set the initial rotation
         spawnPosition = transform.position.x;
     }
@@ -51,6 +51,7 @@ public class ThirdObstacle : BaseObstacle
 
     public override float GetSize()
     {
-        return GetComponent<CapsuleCollider2D>().size.x * transform.localScale.x;
+        return GetComponent<CircleCollider2D>().radius * transform.localScale.x;
+        
     }
 }
