@@ -49,7 +49,7 @@ public class BackgroundController : MonoBehaviour
 
     public float getCurrentHeight()
     {
-        return currentPositionY;
+        return transform.position.y;
     }
 
     public void setBackgroundStartPosition()
