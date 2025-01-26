@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
     {
         if (--playerLife < 1) GameEnd();
 
-        if (playerLife % 2 == 0) AudioManager.PlayLoop((playerLife % 2) + 2);
+        if (playerLife % 2 == 0) AudioManager.PlayLoop((playerLife / 2) + 2);
 
         return playerLife;
     }
