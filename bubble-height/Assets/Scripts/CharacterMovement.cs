@@ -45,7 +45,10 @@ public class CharacterMovement : MonoBehaviour
 
         //Populate the bubbles array
         GenerateBubbles(numberOfBubbles);
-        
+        //Set the bubble in the center of the sphere intangible
+        //bubbles[0].
+        if(numberOfBubbles)
+
     }
 
     private void Update()
@@ -56,10 +59,13 @@ public class CharacterMovement : MonoBehaviour
         //Character movement letf/right
         pos.x = transform.position.x + horizontalMovement * speed * Time.deltaTime;
         pos.x = Mathf.Clamp(pos.x, leftBound, rightBound);
+        pos = new Vector3(pos.x, transform.position.y, transform.position.z);
+
         transform.position = pos;
-        transform.Rotate(transform.position.x, transform.position.y , speed * Time.deltaTime);
+        transform.Rotate(0,0,speed * Time.deltaTime);
 
     }
+
     //Physics2D.BoxCastAll -> Funzione più otimizzata che va in base al tempo che imposti tu
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -79,12 +85,11 @@ public class CharacterMovement : MonoBehaviour
 
     private GameObject[] GenerateBubbles(int howManyBubbles)
     {
-        numberOfBubbles = howManyBubbles;
+        //numberOfBubbles = howManyBubbles;
 
 
         float segment = (2 * Mathf.PI) / (howManyBubbles-1);
 
-        //defineCoordinates();
 
         for (int i = 0; i < howManyBubbles; i++)
         {
@@ -99,32 +104,9 @@ public class CharacterMovement : MonoBehaviour
 
         }
 
-
         GetComponent<CircleCollider2D>().radius = 3;
         return bubbles;
     }
 
-    //Function called from GenerateBubbles once created all the bubbles
-    /*private void defineCoordinates()
-    {
-        float x = 0f;
-        float y = 0f;
-        float angle = 0f;
-
-        bubblePosition[0] = new Vector3(0,0,0);
-
-        float segment = 2 * Mathf.PI;
-        
-        for (int i = 1; i < numberOfBubbles; i++)
-        {
-            angle = 
-
-            x = radius * Mathf.Cos(angle);
-            y = radius * Mathf.Sin(angle);
-
-            bubblePosition[i] = new Vector3(x, y, 0);
-        }
-    
-    }*/
 
 }
