@@ -2,30 +2,32 @@ using UnityEngine;
 
 public class BackgroundController : MonoBehaviour
 {
-    [SerializeField]
-    private float maxY = -1000.0f;
-    [SerializeField]
-    private float speed = 1.0f;
-    [SerializeField]
-    private float startPositionY = 20.0f;
+
+    [SerializeField] private float maxY = -1000.0f;
+    [SerializeField] private float speedY = 1.0f;
+    [SerializeField] private float speedX = 0.0f;
+    [SerializeField] private float startPositionY = 20.0f;
+    [SerializeField] private float startPositionX = 0.0f;
 
     [Header("In visualizzazione")]
-    [SerializeField]
-    private float currentPositionY;
+    [SerializeField] private float currentPositionY;
+    [SerializeField] private float currentPositionX;
 
     private float zPos;
 
     private void Start()
     {
         currentPositionY = startPositionY;
+        currentPositionX = startPositionX;
         zPos = this.gameObject.transform.position.z;
     }
 
 
     private void Update()
     {
-        currentPositionY -= speed * Time.deltaTime;
-        this.gameObject.transform.position = new Vector3(0, currentPositionY, zPos);
+        currentPositionY -= speedY * Time.deltaTime;
+        currentPositionX += speedX * Time.deltaTime;
+        this.gameObject.transform.position = new Vector3(currentPositionX, currentPositionY, zPos);
 
         if (currentPositionY < maxY)
         {
@@ -33,9 +35,9 @@ public class BackgroundController : MonoBehaviour
         }
     }
 
-    public void setSpeed(float speed)
+    public void setSpeedY(float speed)
     {
-        this.speed = speed;
+        speedY = speed;
     }
 
     public float getCurrentHeight()

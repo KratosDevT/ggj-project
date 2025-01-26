@@ -29,8 +29,6 @@ public class GameManager : MonoBehaviour
 
         backgroundController = backGroundGameObject.GetComponent<BackgroundController>();
 
-        AudioManager.Play(0);
-
         Button btn = looseGameCanvas.GetComponentInChildren<Button>();
         btn.onClick.AddListener(PlayAgain);
 
@@ -38,7 +36,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        backgroundController.setSpeed(backGroundVelocity);
+        backgroundController.setSpeedY(backGroundVelocity);
         currentHeight = backgroundController.getCurrentHeight();
 
         if (getCurrentStage() == bgHighLevels.Length) GameEndWin();
@@ -62,7 +60,7 @@ public class GameManager : MonoBehaviour
     {
         istance.looseGameCanvas.SetActive(true);
 
-        AudioManager.Play((int) AudioManager.Song.loose);
+        AudioManager.Play((int)AudioManager.Song.loose);
     }
 
     private static void GameEndWin()
@@ -71,9 +69,10 @@ public class GameManager : MonoBehaviour
         AudioManager.Play((int)AudioManager.Song.win);
     }
 
-    public void PlayAgain() {
+    public void PlayAgain()
+    {
         istance.looseGameCanvas.SetActive(false);
-        //Clear Obstacle
+        backgroundController.setBackgroundStartPosition();
         //reset background
         istance.UnPauseGame();
     }
@@ -81,14 +80,15 @@ public class GameManager : MonoBehaviour
     private void StopGame()
     {
         spawnerGameObject.GetComponent<SpawnerScript>().disableSpawn();
-        backGroundGameObject.SetActive(false);
-        playerGameObject.SetActive(false);
+        backgroundController.enabled = false;
+        playerGameObject.GetComponent<CharacterMovement>().enabled = false;
     }
 
-    private void UnPauseGame() {
+    private void UnPauseGame()
+    {
         spawnerGameObject.GetComponent<SpawnerScript>().enableSpawn();
-        backGroundGameObject.SetActive(true);
-        playerGameObject.SetActive(true);
+        backgroundController.enabled = true;
+        playerGameObject.GetComponent<CharacterMovement>().enabled = true;
     }
 
     public static int getDifficulty()
@@ -98,7 +98,8 @@ public class GameManager : MonoBehaviour
 
     private int getCurrentStage()
     {
-        if (currentHeight < bgHighLevels[stage]) {
+        if (currentHeight < bgHighLevels[stage])
+        {
             ++stage;
         }
         return stage;
