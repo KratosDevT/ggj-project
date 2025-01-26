@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
 
     public void PlayAgain() {
         istance.looseGameCanvas.SetActive(false);
-        //Clear Obstacle
+        backgroundController.setBackgroundStartPosition();
         //reset background
         istance.UnPauseGame();
     }
@@ -81,14 +81,14 @@ public class GameManager : MonoBehaviour
     private void StopGame()
     {
         spawnerGameObject.GetComponent<SpawnerScript>().disableSpawn();
-        backGroundGameObject.SetActive(false);
-        playerGameObject.SetActive(false);
+        backgroundController.enabled = false;
+        playerGameObject.GetComponent<CharacterMovement>().enabled = false;
     }
 
     private void UnPauseGame() {
         spawnerGameObject.GetComponent<SpawnerScript>().enableSpawn();
-        backGroundGameObject.SetActive(true);
-        playerGameObject.SetActive(true);
+        backgroundController.enabled = true;
+        playerGameObject.GetComponent<CharacterMovement>().enabled = true;
     }
 
     public static int getDifficulty()
