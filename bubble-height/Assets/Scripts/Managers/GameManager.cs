@@ -81,6 +81,8 @@ public class GameManager : MonoBehaviour
         playerLife = 10;
         stage = 0;
         istance.UnPauseGame();
+        playerGameObject.transform.position = new Vector3(0, playerGameObject.transform.position.y, 0);
+        playerGameObject.GetComponent<CharacterMovement>().GenerateBubbles(10);
     }
 
     private void PauseGame() {
