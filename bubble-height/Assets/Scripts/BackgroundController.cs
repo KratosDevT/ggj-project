@@ -26,10 +26,10 @@ public class BackgroundController : MonoBehaviour
     {
         currentPositionY -= speed * Time.deltaTime;
         this.gameObject.transform.position = new Vector3(0, currentPositionY, zPos);
+
         if (currentPositionY < maxY)
         {
-            this.gameObject.transform.position = new Vector3(0, startPositionY, zPos);
-            currentPositionY = startPositionY;
+            setBackgroundStartPosition();
         }
     }
 
@@ -41,5 +41,11 @@ public class BackgroundController : MonoBehaviour
     public float getCurrentHeight()
     {
         return currentPositionY;
+    }
+
+    public void setBackgroundStartPosition()
+    {
+        this.gameObject.transform.position = new Vector3(0, startPositionY, zPos);
+        currentPositionY = startPositionY;
     }
 }
