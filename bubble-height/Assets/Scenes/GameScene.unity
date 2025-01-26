@@ -1641,7 +1641,7 @@ PrefabInstance:
     - target: {fileID: 4818512882989562744, guid: f02f947b508c2fb409da05391598c051, type: 3}
       propertyPath: 'obstaclesStage4.Array.data[0]'
       value: 
-      objectReference: {fileID: 8831786008680116776, guid: 0d989f58d4072214ebca732607af912d, type: 3}
+      objectReference: {fileID: 6590738084539728242, guid: a1ebdc9cc98aeaf4cb7a9efd8edad2d5, type: 3}
     - target: {fileID: 4818512882989562744, guid: f02f947b508c2fb409da05391598c051, type: 3}
       propertyPath: 'obstaclesStage4.Array.data[1]'
       value: 
