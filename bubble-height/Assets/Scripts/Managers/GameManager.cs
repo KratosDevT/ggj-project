@@ -81,6 +81,7 @@ public class GameManager : MonoBehaviour
         playerLife = 10;
         stage = 0;
         istance.UnPauseGame();
+        playerGameObject.GetComponent<CharacterMovement>().GenerateBubbles(10);
     }
 
     private void PauseGame() {
