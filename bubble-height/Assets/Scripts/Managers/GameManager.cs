@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        backgroundController.setSpeed(backGroundVelocity);
+        backgroundController.setSpeedY(backGroundVelocity);
         currentHeight = backgroundController.getCurrentHeight();
 
         if (getCurrentStage() == bgHighLevels.Length) GameEndWin();
@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
     {
         istance.looseGameCanvas.SetActive(true);
 
-        AudioManager.Play((int) AudioManager.Song.loose);
+        AudioManager.Play((int)AudioManager.Song.loose);
     }
 
     private static void GameEndWin()
@@ -71,7 +71,8 @@ public class GameManager : MonoBehaviour
         AudioManager.Play((int)AudioManager.Song.win);
     }
 
-    public void PlayAgain() {
+    public void PlayAgain()
+    {
         istance.looseGameCanvas.SetActive(false);
         backgroundController.setBackgroundStartPosition();
         //reset background
@@ -85,7 +86,8 @@ public class GameManager : MonoBehaviour
         playerGameObject.GetComponent<CharacterMovement>().enabled = false;
     }
 
-    private void UnPauseGame() {
+    private void UnPauseGame()
+    {
         spawnerGameObject.GetComponent<SpawnerScript>().enableSpawn();
         backgroundController.enabled = true;
         playerGameObject.GetComponent<CharacterMovement>().enabled = true;
@@ -98,7 +100,8 @@ public class GameManager : MonoBehaviour
 
     private int getCurrentStage()
     {
-        if (currentHeight < bgHighLevels[stage]) {
+        if (currentHeight < bgHighLevels[stage])
+        {
             ++stage;
         }
         return stage;
