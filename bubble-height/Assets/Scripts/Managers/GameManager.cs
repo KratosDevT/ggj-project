@@ -43,7 +43,13 @@ public class GameManager : MonoBehaviour
         backgroundController.setSpeedY(backGroundVelocity);
         currentHeight = backgroundController.getCurrentHeight();
 
-        if (getCurrentStage() == bgHighLevels.Length) GameEndWin();
+        //if (getCurrentStage() == bgHighLevels.Length) GameEndWin();
+        Debug.Log(backgroundController.getCurrentHeight());
+        if (backgroundController.getCurrentHeight() < -45.0f)
+        {
+            GameEndWin();
+        }
+
 
         if (activeWinCondition)
         {
@@ -76,7 +82,8 @@ public class GameManager : MonoBehaviour
         istance.PauseGame();
         AudioManager.PlayLoop(0);
         ObstaclePauser.DestroyElemets();
-        playerLife = 0;
+        Destroy(istance.playerGameObject);
+        AudioManager.Play(1);
         ProcessWinCondition();
     }
 
