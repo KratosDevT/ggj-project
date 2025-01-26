@@ -60,6 +60,8 @@ public class GameManager : MonoBehaviour
     {
         istance.looseGameCanvas.SetActive(true);
 
+        istance.StopGame();
+
         AudioManager.Play((int)AudioManager.Song.loose);
     }
 
