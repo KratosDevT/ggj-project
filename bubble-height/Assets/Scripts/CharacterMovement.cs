@@ -21,9 +21,9 @@ public class CharacterMovement : MonoBehaviour
     private float timer = 0f;
 
     [SerializeField]
-    private float leftBound = -2.0f;
+    private float leftBound = -2.75f;
     [SerializeField]
-    private float rightBound = 2.0f;
+    private float rightBound = 2.75f;
 
     [SerializeField]
     private GameObject bubblePrefab;
@@ -69,7 +69,8 @@ public class CharacterMovement : MonoBehaviour
         //If the timer is still going on, ignore the collision
         if (timer > 0f)
             return;
-            
+        timer = 3;    //Invincible for timer time
+
         Debug.Log("Hit");
 
         GameObject bubble = bubbles[bubbles.Count - 1];
