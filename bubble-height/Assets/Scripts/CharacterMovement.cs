@@ -6,6 +6,7 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField]
     private float speed = 1.0f;
     private Vector3 pos;
+    private int hp; 
 
     private float timer = 0f;
 
@@ -40,7 +41,7 @@ public class CharacterMovement : MonoBehaviour
         pos.x = transform.position.x + horizontalMovement * speed * Time.deltaTime;
         pos.x = Mathf.Clamp(pos.x, leftBound, rightBound);
         transform.position = pos;
-    
+       
     }
     //Physics2D.BoxCastAll -> Funzione più otimizzata che va in base al tempo che imposti tu
     private void OnCollisionEnter2D(Collision2D collision)
@@ -51,9 +52,9 @@ public class CharacterMovement : MonoBehaviour
         //Proceed with the actions caused by the collison
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            //Minus one bubble (-1HP)
-            Debug.Log("Died!");
-            //Destroy()
+            //Destroy fatto con l'update disabilitato per quella bolla
+            hp = GameManager.PlayerIsHit();
+            
             
         }
           
