@@ -2,37 +2,48 @@ using UnityEngine;
 
 public class BackgroundController : MonoBehaviour
 {
+    [SerializeField] private bool enableScrollXAxis = false;
+    [SerializeField] private bool enableScrollYAxis = false;
 
-    [SerializeField] private float maxY = -1000.0f;
-    [SerializeField] private float speedY = 1.0f;
+    //[SerializeField] private float maxY = -1000.0f;
+
+    [SerializeField] private float speedY = 0.0f;
     [SerializeField] private float speedX = 0.0f;
-    [SerializeField] private float startPositionY = 20.0f;
+    [SerializeField] private float startPositionY = 0.0f;
     [SerializeField] private float startPositionX = 0.0f;
 
-    [Header("In visualizzazione")]
+    [Header("Coordinate In visualizzazione")]
     [SerializeField] private float currentPositionY;
     [SerializeField] private float currentPositionX;
-
-    private float zPos;
+    [SerializeField] private float currentPositionZ;
 
     private void Start()
     {
         currentPositionY = startPositionY;
         currentPositionX = startPositionX;
-        zPos = this.gameObject.transform.position.z;
+        currentPositionZ = this.gameObject.transform.position.z;
+        this.gameObject.transform.position = new Vector3(currentPositionX, currentPositionY, currentPositionZ);
     }
 
 
     private void Update()
     {
-        currentPositionY -= speedY * Time.deltaTime;
-        currentPositionX += speedX * Time.deltaTime;
+        if (enableScrollYAxis)
+        {
+            currentPositionY += speedY * Time.deltaTime;
+        }
+
+        if (enableScrollXAxis)
+        {
+            currentPositionX += speedX * Time.deltaTime;
+        }
+
         this.gameObject.transform.position = new Vector3(currentPositionX, currentPositionY, zPos);
 
-        if (currentPositionY < maxY)
-        {
-            setBackgroundStartPosition();
-        }
+        //if (currentPositionY < maxY)
+        //{
+        //    setBackgroundStartPosition();
+        //}
     }
 
     public void setSpeedY(float speed)
