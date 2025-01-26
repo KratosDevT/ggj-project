@@ -75,6 +75,8 @@ public class GameManager : MonoBehaviour
         ObstaclePauser.DestroyElemets();
         istance.looseGameCanvas.SetActive(false);
         backgroundController.setBackgroundStartPosition();
+        playerLife = 10;
+        stage = 0;
         istance.UnPauseGame();
     }
 
