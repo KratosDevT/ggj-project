@@ -4,6 +4,8 @@ public class DestructorController : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D other)
     {
-         Destroy(other.gameObject);
+
+        ObstaclePauser.UpdateElemet(other.gameObject);
+        Destroy(other.gameObject);
     }
 }
