@@ -42,8 +42,8 @@ public class AudioManager : MonoBehaviour {
     public static void PlayLoop(int index) {
         float time = loopSoundAudio.time;
         loopSoundAudio.clip = audioManagerIstance.getAudioClip(index);
-        loopSoundAudio.Play();
         loopSoundAudio.time = time;
+        loopSoundAudio.Play();
     }
 
     public static void Play(int index) {
