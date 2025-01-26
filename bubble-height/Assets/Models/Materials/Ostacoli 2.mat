@@ -64,13 +64,14 @@ Material:
     m_Floats:
     - _EnableExternalAlpha: 0
     - _Outline_Durezza: 0.1
-    - _Outline_Spessore: 2.67
+    - _Outline_Spessore: 2.9
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _Roughness: 0.7
     - _ZWrite: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _OutlineColor: {r: 0.8415094, g: 0.8415094, b: 0.8415094, a: 1}
+    - _OutlineColor: {r: 0.86415094, g: 0.86415094, b: 0.86415094, a: 0.27450982}
     - _PrimaryColor: {r: 0.21767578, g: 0.21698096, b: 1, a: 0.6078432}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _SecondColor: {r: 0.27637586, g: 0.8320177, b: 0.8566037, a: 0.6588235}

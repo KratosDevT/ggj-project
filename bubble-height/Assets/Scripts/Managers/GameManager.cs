@@ -58,27 +58,28 @@ public class GameManager : MonoBehaviour
     {
         istance.looseGameCanvas.SetActive(true);
 
-        istance.StopGame();
+        istance.PauseGame();
 
         AudioManager.Play((int)AudioManager.Song.loose);
     }
 
     private static void GameEndWin()
     {
-        istance.StopGame();
+        istance.PauseGame();
         AudioManager.PlayLoop((int)AudioManager.Song.win);
     }
 
     public void PlayAgain()
     {
+        ObstaclePauser.DestroyElemets();
         istance.looseGameCanvas.SetActive(false);
         backgroundController.setBackgroundStartPosition();
         //reset background
         istance.UnPauseGame();
     }
 
-    private void StopGame()
-    {
+    private void PauseGame() {
+        ObstaclePauser.PauseElemets();
         spawnerGameObject.GetComponent<SpawnerScript>().disableSpawn();
         backgroundController.enabled = false;
         playerGameObject.GetComponent<CharacterMovement>().enabled = false;

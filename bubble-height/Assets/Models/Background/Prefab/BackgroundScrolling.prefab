@@ -156,7 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableScrollXAxis: 0
   enableScrollYAxis: 1
-  speedY: 1
+  speedY: -1
   speedX: 0
   startPositionY: 30
   startPositionX: 0

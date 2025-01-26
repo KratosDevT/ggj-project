@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6a80843b753a28d4db9dbe715b131e85
+guid: 55051ba9ba6cc3f42ba4a094fb10f887
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,7 +7,7 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Soffione
+      name: Pioggia
     second: {fileID: 2100000, guid: cea7c26d6a6549b4d9f71334574ae176, type: 2}
   materials:
     materialImportMode: 2
