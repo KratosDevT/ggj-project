@@ -179,12 +179,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3534338731534607813, guid: 6eb4b6eeb9e43d74e89e6bfa4d847848, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534338731534607813, guid: 6eb4b6eeb9e43d74e89e6bfa4d847848, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534338731534607813, guid: 6eb4b6eeb9e43d74e89e6bfa4d847848, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534338731534607813, guid: 6eb4b6eeb9e43d74e89e6bfa4d847848, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3534338731534607813, guid: 6eb4b6eeb9e43d74e89e6bfa4d847848, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3534338731534607813, guid: 6eb4b6eeb9e43d74e89e6bfa4d847848, type: 3}
       propertyPath: m_LocalPosition.z
@@ -222,6 +234,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Uccello_Animato
       objectReference: {fileID: 0}
+    - target: {fileID: 8056594558516674225, guid: 6eb4b6eeb9e43d74e89e6bfa4d847848, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -247,8 +263,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fbe63701de525e4d9f43374cbb3b2ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  xdelay: 10
+  speed: 1.5
+  xdelay: 5
 --- !u!1 &2103104629
 GameObject:
   m_ObjectHideFlags: 0
