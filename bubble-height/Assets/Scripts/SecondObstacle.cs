@@ -4,10 +4,11 @@ using UnityEngine.UIElements;
 
 public class SecondObstacle : BaseObstacle
 {
-    private float movement;
-    private float direction = 1; //module of direction
+    protected float direction = 1; //module of direction
 
-    private float horizontalLimit;
+    protected float horizontalLimit;
+
+    protected float movement;
 
     void Start()
     {
@@ -23,7 +24,7 @@ public class SecondObstacle : BaseObstacle
     {
         Vector3 nextPosition = transform.position;
         movement = obstacleSpeed * Time.deltaTime;
-        nextPosition.x += movement * direction * 2; //changing the x axis for the double of the y axis
+        nextPosition.x += movement * direction * 2f; //changing the x axis for the double of the y axis
         nextPosition.y += -movement * 2f; //changing the y axis
         if(nextPosition.x > horizontalLimit || nextPosition.x < -horizontalLimit) //changing the direction based on the spawner position
         {
