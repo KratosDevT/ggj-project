@@ -24,7 +24,7 @@ public class AudioManager : MonoBehaviour {
         monoSoundAudio = monoSound.GetComponent<AudioSource>();
         loopSoundAudio = loopSound.GetComponent<AudioSource>();
 
-        loopSoundAudio.clip = audioClips[2];
+        loopSoundAudio.clip = audioClips[7];
         loopSoundAudio.Play();
 
     }
