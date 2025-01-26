@@ -49,7 +49,8 @@ public class SpawnerScript : MonoBehaviour {
 
         if (waitToSpawn > 0.0f) return;
 
-        int currentLevel = 0;//todo: get level 
+        int currentLevel = GameManager.getDifficulty();
+        Debug.Log(currentLevel);
 
         int obstacleLen = obstacles[currentLevel].Length;
 

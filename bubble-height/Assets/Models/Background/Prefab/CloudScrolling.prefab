@@ -119,6 +119,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8223768734128260169}
   - component: {fileID: 3354876263036107883}
+  - component: {fileID: -207131621552598881}
   m_Layer: 0
   m_Name: CloudScrolling
   m_TagString: Untagged
@@ -156,7 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69ee79496deabd94eab7137191a32692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableScrollXAxis: 1
+  enableScrollXAxis: 0
   enableScrollYAxis: 1
   speedY: -1
   speedX: 1
@@ -165,6 +166,18 @@ MonoBehaviour:
   currentPositionY: 10
   currentPositionX: 0
   currentPositionZ: 0
+--- !u!114 &-207131621552598881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950823780527669501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04155142ffa6e864bbe40be2753b23ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4967347258898946907
 GameObject:
   m_ObjectHideFlags: 0

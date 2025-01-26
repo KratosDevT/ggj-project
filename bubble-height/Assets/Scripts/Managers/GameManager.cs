@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
         istance = this;
 
         backgroundController = backGroundGameObject.GetComponent<BackgroundController>();
+        currentHeight = backgroundController.getCurrentHeight();
 
 
     }

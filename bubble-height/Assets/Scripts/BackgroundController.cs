@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class BackgroundController : MonoBehaviour
@@ -48,12 +49,17 @@ public class BackgroundController : MonoBehaviour
 
     public float getCurrentHeight()
     {
-        return currentPositionY;
+        return transform.position.y;
     }
 
     public void setBackgroundStartPosition()
     {
         this.gameObject.transform.position = new Vector3(0, startPositionY, currentPositionZ);
         currentPositionY = startPositionY;
+    }
+
+    internal void activateScrollXAxis()
+    {
+        enableScrollXAxis = true;
     }
 }
