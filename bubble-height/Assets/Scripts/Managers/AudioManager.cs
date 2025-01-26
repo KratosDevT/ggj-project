@@ -12,7 +12,7 @@ public class AudioManager : MonoBehaviour {
     private static AudioManager audioManagerIstance;
 
     private static AudioSource monoSoundAudio;
-    private static List<AudioSource> loopSoundAudios;
+    private static List<AudioSource> loopSoundAudios = new List<AudioSource>();
 
     private static int current = 4;
 
