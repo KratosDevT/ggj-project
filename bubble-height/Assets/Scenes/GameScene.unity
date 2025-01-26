@@ -1570,6 +1570,82 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4818512882989562744, guid: f02f947b508c2fb409da05391598c051, type: 3}
+      propertyPath: obstaclesStage0.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818512882989562744, guid: f02f947b508c2fb409da05391598c051, type: 3}
+      propertyPath: obstaclesStage1.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818512882989562744, guid: f02f947b508c2fb409da05391598c051, type: 3}
+      propertyPath: obstaclesStage2.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818512882989562744, guid: f02f947b508c2fb409da05391598c051, type: 3}
+      propertyPath: obstaclesStage3.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818512882989562744, guid: f02f947b508c2fb409da05391598c051, type: 3}
+      propertyPath: obstaclesStage4.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818512882989562744, guid: f02f947b508c2fb409da05391598c051, type: 3}
+      propertyPath: 'obstaclesStage0.Array.data[0]'
+      value: 
+      objectReference: {fileID: 4582017611876670391, guid: 7bf0bf6558574364898c0ea63872318c, type: 3}
+    - target: {fileID: 4818512882989562744, guid: f02f947b508c2fb409da05391598c051, type: 3}
+      propertyPath: 'obstaclesStage0.Array.data[1]'
+      value: 
+      objectReference: {fileID: 3135863855272186372, guid: bbcab75dd1846c040b0cb371a1354dad, type: 3}
+    - target: {fileID: 4818512882989562744, guid: f02f947b508c2fb409da05391598c051, type: 3}
+      propertyPath: 'obstaclesStage1.Array.data[0]'
+      value: 
+      objectReference: {fileID: 5414943570243974384, guid: 9ea22d500ee6402438c26c879fd8326e, type: 3}
+    - target: {fileID: 4818512882989562744, guid: f02f947b508c2fb409da05391598c051, type: 3}
+      propertyPath: 'obstaclesStage1.Array.data[1]'
+      value: 
+      objectReference: {fileID: 270028820849014768, guid: 52fcd006b8e91414eb62c37e9538b63a, type: 3}
+    - target: {fileID: 4818512882989562744, guid: f02f947b508c2fb409da05391598c051, type: 3}
+      propertyPath: 'obstaclesStage1.Array.data[2]'
+      value: 
+      objectReference: {fileID: 3135863855272186372, guid: bbcab75dd1846c040b0cb371a1354dad, type: 3}
+    - target: {fileID: 4818512882989562744, guid: f02f947b508c2fb409da05391598c051, type: 3}
+      propertyPath: 'obstaclesStage1.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8989579806419419717, guid: 0248a4624b24d0d4aa24f3b2268730e7, type: 3}
+    - target: {fileID: 4818512882989562744, guid: f02f947b508c2fb409da05391598c051, type: 3}
+      propertyPath: 'obstaclesStage2.Array.data[1]'
+      value: 
+      objectReference: {fileID: 3470212507815363854, guid: 5426cbed7072eb4459faca3d13db710b, type: 3}
+    - target: {fileID: 4818512882989562744, guid: f02f947b508c2fb409da05391598c051, type: 3}
+      propertyPath: 'obstaclesStage2.Array.data[2]'
+      value: 
+      objectReference: {fileID: 3135863855272186372, guid: bbcab75dd1846c040b0cb371a1354dad, type: 3}
+    - target: {fileID: 4818512882989562744, guid: f02f947b508c2fb409da05391598c051, type: 3}
+      propertyPath: 'obstaclesStage2.Array.data[3]'
+      value: 
+      objectReference: {fileID: 270028820849014768, guid: 52fcd006b8e91414eb62c37e9538b63a, type: 3}
+    - target: {fileID: 4818512882989562744, guid: f02f947b508c2fb409da05391598c051, type: 3}
+      propertyPath: 'obstaclesStage3.Array.data[0]'
+      value: 
+      objectReference: {fileID: 3470212507815363854, guid: 5426cbed7072eb4459faca3d13db710b, type: 3}
+    - target: {fileID: 4818512882989562744, guid: f02f947b508c2fb409da05391598c051, type: 3}
+      propertyPath: 'obstaclesStage3.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8989579806419419717, guid: 0248a4624b24d0d4aa24f3b2268730e7, type: 3}
+    - target: {fileID: 4818512882989562744, guid: f02f947b508c2fb409da05391598c051, type: 3}
+      propertyPath: 'obstaclesStage3.Array.data[2]'
+      value: 
+      objectReference: {fileID: 270028820849014768, guid: 52fcd006b8e91414eb62c37e9538b63a, type: 3}
+    - target: {fileID: 4818512882989562744, guid: f02f947b508c2fb409da05391598c051, type: 3}
+      propertyPath: 'obstaclesStage4.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8831786008680116776, guid: 0d989f58d4072214ebca732607af912d, type: 3}
+    - target: {fileID: 4818512882989562744, guid: f02f947b508c2fb409da05391598c051, type: 3}
+      propertyPath: 'obstaclesStage4.Array.data[1]'
+      value: 
+      objectReference: {fileID: 3397540057884650612, guid: 17bc010417f85124f8df33fa52df7442, type: 3}
     - target: {fileID: 6277743635897663691, guid: f02f947b508c2fb409da05391598c051, type: 3}
       propertyPath: m_Name
       value: Spanwer
