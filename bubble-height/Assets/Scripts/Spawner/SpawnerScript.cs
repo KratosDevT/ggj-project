@@ -112,7 +112,7 @@ public class SpawnerScript : MonoBehaviour {
             xMax = obstacleSpawed.transform.position.x + lastSpawnedSize
         };
 
-        waitToSpawn = 1;
+        waitToSpawn = 2;
     }
 
 
