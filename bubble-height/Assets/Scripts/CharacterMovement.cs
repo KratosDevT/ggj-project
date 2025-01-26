@@ -2,21 +2,29 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-    //private float horizontal;
+
     [SerializeField]
     private float speed = 1.0f;
     private Vector3 pos;
-    private int hp; 
+    private int hp;
 
+    //Array that contains all the bubbles (Max 10 bubbles)
+    private GameObject[] bubbles = new GameObject [10];
+    private int numberOfBubbles = 10;
+    private Vector3[] bubblePosition = new Vector3[10];   //.GetComponent<SphereCollider>().radius;
+    private float radius = 0f;
+
+
+    //Timer to manage the collisions
     private float timer = 0f;
-
-    //Usefull to diable the physhics of the character once hitted
-    private Rigidbody rigidBodyCharacter;
 
     [SerializeField]
     private float leftBound = -2.0f;
     [SerializeField]
     private float rightBound = 2.0f;
+
+    [SerializeField]
+    private GameObject bubblePrefab;
 
     public float GetSpeed()
     {
@@ -29,11 +37,18 @@ public class CharacterMovement : MonoBehaviour
     void Start()
     {
         pos = new Vector3(0, transform.position.y, transform.position.z);
+
+        radius = GetComponent<CircleCollider2D>().radius;
+        Debug.Log(radius);
+
+        //Insert the main bubble inside the first position of the array
+        //Populate the bubbles array
+        GenerateBubbles(numberOfBubbles);
+        
     }
 
     private void Update()
     {
-        //Timer, wich goes one with each update
         if (timer > 0f)
             timer -= Time.deltaTime;
         float horizontalMovement = Input.GetAxis("Horizontal");
@@ -58,5 +73,42 @@ public class CharacterMovement : MonoBehaviour
             
         }
           
+    }
+
+    private GameObject[] GenerateBubbles(int howManyBubbles)
+    {
+        numberOfBubbles = howManyBubbles;
+
+        for (int i = 0; i < howManyBubbles; i++)
+        {
+            //All sons of the parent gameObject CharacterMovement
+            bubbles[i] = Instantiate(bubblePrefab, bubblePosition[i], Quaternion.identity, transform);
+
+
+        }
+
+        return bubbles;
+    }
+
+    //Function called from GenerateBubbles once created all the bubbles
+    private void definteCoordinates()
+    {
+        float x = 0f;
+        float y = 0f;
+        float angle = 0f;
+
+        bubblePosition[0] = new Vector3(0,0,0);
+        
+        for (int i = 1; i < numberOfBubbles; i++)
+        {
+            angle = 2 * Mathf.PI * i;
+
+            x = radius * Mathf.Cos(angle);
+            y = radius * Mathf.Sin(angle);
+
+            bubblePosition[i] = new Vector3(x, y, 0);
+        }
+
+
     }
 }
