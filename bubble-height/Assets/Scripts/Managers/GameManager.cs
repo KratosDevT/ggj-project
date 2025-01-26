@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
     {
         if (--playerLife < 1) GameEnd();
 
-        if (playerLife % 2 == 0) AudioManager.PlayLoop((playerLife / 2) + 2);
+        if (playerLife % 2 == 0) AudioManager.PlayLoop((playerLife / 2) + 1);
 
         return playerLife;
     }
@@ -61,13 +61,13 @@ public class GameManager : MonoBehaviour
 
         istance.PauseGame();
 
-        AudioManager.Play((int)AudioManager.Song.loose);
+        AudioManager.Play(0);
     }
 
     private static void GameEndWin()
     {
         istance.PauseGame();
-        AudioManager.PlayLoop((int)AudioManager.Song.win);
+        AudioManager.PlayLoop(0);
     }
 
     public void PlayAgain()
@@ -75,7 +75,6 @@ public class GameManager : MonoBehaviour
         ObstaclePauser.DestroyElemets();
         istance.looseGameCanvas.SetActive(false);
         backgroundController.setBackgroundStartPosition();
-        //reset background
         istance.UnPauseGame();
     }
 
