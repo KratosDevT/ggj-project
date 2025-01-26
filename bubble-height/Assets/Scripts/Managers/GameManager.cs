@@ -29,8 +29,6 @@ public class GameManager : MonoBehaviour
 
         backgroundController = backGroundGameObject.GetComponent<BackgroundController>();
 
-        AudioManager.Play(0);
-
         Button btn = looseGameCanvas.GetComponentInChildren<Button>();
         btn.onClick.AddListener(PlayAgain);
 
