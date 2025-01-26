@@ -20,10 +20,8 @@ public class CharacterMovement : MonoBehaviour
     //Timer to manage the collisions
     private float timer = 0f;
 
-    [SerializeField]
-    private float leftBound = -2.75f;
-    [SerializeField]
-    private float rightBound = 2.75f;
+    private float leftBound;
+    private float rightBound;
 
     [SerializeField]
     private GameObject bubblePrefab;
@@ -38,13 +36,16 @@ public class CharacterMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        pos = new Vector3(0, transform.position.y, transform.position.z);
+        transform.position = new Vector3(0, transform.position.y, transform.position.z);
 
         radius = 2 * (GetComponent<CircleCollider2D>().radius);
         Debug.Log(radius);
 
         //Populate the bubbles array
         GenerateBubbles(numberOfBubbles);
+
+        leftBound = Camera.main.transform.position.x - (Camera.main.orthographicSize * Camera.main.aspect) + 1.50f;
+        rightBound = Camera.main.transform.position.x + (Camera.main.orthographicSize * Camera.main.aspect) - 1.50f;
 
     }
 
@@ -54,11 +55,11 @@ public class CharacterMovement : MonoBehaviour
             timer -= Time.deltaTime;
         float horizontalMovement = Input.GetAxis("Horizontal");
         //Character movement letf/right
-        pos.x = transform.position.x + horizontalMovement * speed * Time.deltaTime;
-        pos.x = Mathf.Clamp(pos.x, leftBound, rightBound);
-        pos = new Vector3(pos.x, transform.position.y, transform.position.z);
+        float x = transform.position.x + horizontalMovement * speed * Time.deltaTime;
+        x = Mathf.Clamp(x, leftBound, rightBound);
+        transform.position = new Vector3(x, transform.position.y, transform.position.z);
 
-        transform.position = pos;
+        //transform.position = pos;
         transform.Rotate(0, 0, speed * Time.deltaTime);
 
     }
@@ -66,6 +67,8 @@ public class CharacterMovement : MonoBehaviour
     //Physics2D.BoxCastAll -> Funzione pi� otimizzata che va in base al tempo che imposti tu
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        float radiusCollider = GetComponent<CircleCollider2D>().radius;
+
         //If the timer is still going on, ignore the collision
         if (timer > 0f)
             return;
@@ -77,6 +80,9 @@ public class CharacterMovement : MonoBehaviour
 
         bubbles.Remove(bubble);
         Destroy(bubble);
+
+        radiusCollider -= 0.3f;
+        GetComponent<CircleCollider2D>().radius = radiusCollider;
 
         //Return of the remaining HP
         GameManager.PlayerIsHit();

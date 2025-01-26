@@ -16,7 +16,7 @@ public class ThirdObstacle : BaseObstacle
 
     void Start()
     {
-        obstacleSpeed = speed * 0.8f; //it depends on the speed of the base class
+        obstacleSpeed = speed * 1.8f; //it depends on the speed of the base class
         transform.rotation = Quaternion.Euler(initialRotation); //set the initial rotation
         spawnPosition = transform.position.x;
     }
