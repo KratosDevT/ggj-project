@@ -43,7 +43,6 @@ public class CharacterMovement : MonoBehaviour
         radius = 2*(GetComponent<CircleCollider2D>().radius);
         Debug.Log(radius);
 
-        //Insert the main bubble inside the first position of the array
         //Populate the bubbles array
         GenerateBubbles(numberOfBubbles);
         
@@ -58,7 +57,8 @@ public class CharacterMovement : MonoBehaviour
         pos.x = transform.position.x + horizontalMovement * speed * Time.deltaTime;
         pos.x = Mathf.Clamp(pos.x, leftBound, rightBound);
         transform.position = pos;
-       
+        transform.Rotate(0, 0 , 10 * Time.deltaTime);
+
     }
     //Physics2D.BoxCastAll -> Funzione più otimizzata che va in base al tempo che imposti tu
     private void OnCollisionEnter2D(Collision2D collision)
