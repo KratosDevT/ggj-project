@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
         //if (getCurrentStage() == bgHighLevels.Length) GameEndWin();
         Debug.Log(backgroundController.getCurrentHeight());
 
-        if (backgroundController.getCurrentHeight() < -45.0f)
+        if (getDifficulty() == 5)
         {
             Debug.Log("WIN!");
             GameEndWin();
