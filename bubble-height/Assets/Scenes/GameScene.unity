@@ -161,7 +161,7 @@ Transform:
   m_GameObject: {fileID: 145289438}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 30, z: 10}
+  m_LocalPosition: {x: 0, y: -20.28, z: 10}
   m_LocalScale: {x: 1, y: 7.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1057,6 +1057,9 @@ MonoBehaviour:
   audioClips:
   - {fileID: 8300000, guid: cdac4fe68e0be85439de8a0c9e4a7201, type: 3}
   - {fileID: 8300000, guid: ca57548e49796c64795026d029c63857, type: 3}
+  - {fileID: 8300000, guid: 133b9111441d97043964b1f59907c47e, type: 3}
+  - {fileID: 8300000, guid: 6095f71156279d8449efc302536407d3, type: 3}
+  - {fileID: 8300000, guid: 64c0d43f88ae1194ab20cded3e8b6671, type: 3}
 --- !u!82 &1496535858
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1264,14 +1267,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerGameObject: {fileID: 456940374}
   backGroundGameObject: {fileID: 145289438}
-  audioManagerGameObject: {fileID: 1496535856}
   spawnerGameObject: {fileID: 1680627989}
   bgHighLevels:
-  - 23
+  - 21
   - 6
-  - -19
-  - -40
+  - -7
+  - -20
   backGroundVelocity: 0.2
+  currentHeight: 0
   stage: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
