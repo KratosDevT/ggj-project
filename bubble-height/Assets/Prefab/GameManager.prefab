@@ -53,6 +53,6 @@ MonoBehaviour:
   - 6
   - -7
   - -20
-  backGroundVelocity: 0.2
+  backGroundVelocity: -1
   currentHeight: 0
   stage: 0
