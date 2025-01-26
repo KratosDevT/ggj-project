@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4326fe02c836c09418fbf38d0ceceb02, type: 3}
       propertyPath: m_Name
-      value: Uccello_Animato_Grigio
+      value: UccelloGrigio_Animato
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 4326fe02c836c09418fbf38d0ceceb02, type: 3}
       propertyPath: m_Controller
@@ -66,6 +66,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4326fe02c836c09418fbf38d0ceceb02, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1486397185302936968}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4326fe02c836c09418fbf38d0ceceb02, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 441033273121071729}
   m_SourcePrefab: {fileID: 100100000, guid: 4326fe02c836c09418fbf38d0ceceb02, type: 3}
 --- !u!1 &8989579806419419717 stripped
 GameObject:
@@ -109,3 +112,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   xdelay: 4
+--- !u!114 &441033273121071729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8989579806419419717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c68931749b3ca149904ca227a8daa31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
