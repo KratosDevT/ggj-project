@@ -57,7 +57,7 @@ public class CharacterMovement : MonoBehaviour
         pos.x = transform.position.x + horizontalMovement * speed * Time.deltaTime;
         pos.x = Mathf.Clamp(pos.x, leftBound, rightBound);
         transform.position = pos;
-        transform.Rotate(0, 0 , speed * Time.deltaTime);
+        transform.Rotate(transform.position.x, transform.position.y , speed * Time.deltaTime);
 
     }
     //Physics2D.BoxCastAll -> Funzione più otimizzata che va in base al tempo che imposti tu
