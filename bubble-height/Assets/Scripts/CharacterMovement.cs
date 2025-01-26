@@ -8,7 +8,6 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField]
     private float speed = 1.0f;
     private Vector3 pos;
-    private int hp;
 
     //Array that contains all the bubbles (Max 10 bubbles)
     private GameObject[] bubbles = new GameObject [10];
@@ -45,9 +44,6 @@ public class CharacterMovement : MonoBehaviour
 
         //Populate the bubbles array
         GenerateBubbles(numberOfBubbles);
-        //Set the bubble in the center of the sphere intangible
-        //bubbles[0].
-        if(numberOfBubbles)
 
     }
 
@@ -77,7 +73,10 @@ public class CharacterMovement : MonoBehaviour
         {
             Debug.Log("Hit");
             //Return of the remaining HP
-            hp = GameManager.PlayerIsHit();
+            GameManager.PlayerIsHit();
+            //Iterate the bubble array until you find the last one
+
+            
             
         }
           

@@ -36,7 +36,7 @@ public class ThirdObstacle : BaseObstacle
         nextPosition.x = Mathf.Sin(timeElapsed * frequency) * amplitude + spawnPosition;
 
         //oscillation on the y axis
-        nextPosition.y -= obstacleSpeed * verticalSpeedMultiplier * Time.deltaTime;
+        nextPosition.y -= obstacleSpeed * verticalSpeedMultiplier * Time.deltaTime * 2f;
 
         //rotation based on distance from center (horizontal limit)
         float normalizedDistance = Mathf.Abs(nextPosition.x) / amplitude; //normalized value (0 at the center, 1 at the edges)
