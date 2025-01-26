@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ public class CharacterMovement : MonoBehaviour
     private Vector3 pos;
 
     //Array that contains all the bubbles (Max 10 bubbles)
-    private GameObject[] bubbles = new GameObject[10];
+    private List<GameObject> bubbles = new List<GameObject>();
     private int numberOfBubbles = 10;
     private Vector3[] bubblePosition = new Vector3[10];   //.GetComponent<SphereCollider>().radius;
     private float radius = 0f;
@@ -20,9 +21,9 @@ public class CharacterMovement : MonoBehaviour
     private float timer = 0f;
 
     [SerializeField]
-    private float leftBound = -2.0f;
+    private float leftBound = -2.75f;
     [SerializeField]
-    private float rightBound = 2.0f;
+    private float rightBound = 2.75f;
 
     [SerializeField]
     private GameObject bubblePrefab;
@@ -68,13 +69,20 @@ public class CharacterMovement : MonoBehaviour
         //If the timer is still going on, ignore the collision
         if (timer > 0f)
             return;
-            
+        timer = 3;    //Invincible for timer time
+
         Debug.Log("Hit");
+
+        GameObject bubble = bubbles[bubbles.Count - 1];
+
+        bubbles.Remove(bubble);
+        Destroy(bubble);
+
         //Return of the remaining HP
         GameManager.PlayerIsHit();
     }
 
-    private GameObject[] GenerateBubbles(int howManyBubbles)
+    public void GenerateBubbles(int howManyBubbles)
     {
         //numberOfBubbles = howManyBubbles;
 
@@ -91,12 +99,11 @@ public class CharacterMovement : MonoBehaviour
             float y = radius * Mathf.Sin(angle) * Convert.ToInt32(i != 0) + transform.position.y;
 
             //All sons of the parent gameObject CharacterMovement
-            bubbles[i] = Instantiate(bubblePrefab, new Vector3(x, y, 0), Quaternion.identity, transform);
+            bubbles.Add(Instantiate(bubblePrefab, new Vector3(x, y, 0), Quaternion.identity, transform));
 
         }
 
         GetComponent<CircleCollider2D>().radius = 3;
-        return bubbles;
     }
 
 
