@@ -57,4 +57,8 @@ public class FourthObstacle : SecondObstacle
         nextPosition.y += -movement * 2f; //changing the y axis
         transform.position = Vector3.Lerp(transform.position, nextPosition, 0.5f);
     }
+    public override float GetSize()
+    {
+        return GetComponent<CapsuleCollider>().height * Mathf.Cos(30);
+    }
 }
