@@ -1409,7 +1409,7 @@ PrefabInstance:
     - target: {fileID: 4818512882989562744, guid: f02f947b508c2fb409da05391598c051, type: 3}
       propertyPath: 'obstaclesStage0.Array.data[0]'
       value: 
-      objectReference: {fileID: 4582017611876670391, guid: 7bf0bf6558574364898c0ea63872318c, type: 3}
+      objectReference: {fileID: 6151869739686904897, guid: 7bf0bf6558574364898c0ea63872318c, type: 3}
     - target: {fileID: 4818512882989562744, guid: f02f947b508c2fb409da05391598c051, type: 3}
       propertyPath: 'obstaclesStage0.Array.data[1]'
       value: 
@@ -1417,7 +1417,7 @@ PrefabInstance:
     - target: {fileID: 4818512882989562744, guid: f02f947b508c2fb409da05391598c051, type: 3}
       propertyPath: 'obstaclesStage1.Array.data[0]'
       value: 
-      objectReference: {fileID: 5414943570243974384, guid: 9ea22d500ee6402438c26c879fd8326e, type: 3}
+      objectReference: {fileID: 8155852543006744135, guid: 9ea22d500ee6402438c26c879fd8326e, type: 3}
     - target: {fileID: 4818512882989562744, guid: f02f947b508c2fb409da05391598c051, type: 3}
       propertyPath: 'obstaclesStage1.Array.data[1]'
       value: 
