@@ -10,7 +10,11 @@ using Random = UnityEngine.Random;
 
 public class SpawnerScript : MonoBehaviour {
 
-    [SerializeField] private GameObject[] obstaclesEasy;
+    [SerializeField] private GameObject[] obstaclesStage0;
+    [SerializeField] private GameObject[] obstaclesStage1;
+    [SerializeField] private GameObject[] obstaclesStage2;
+    [SerializeField] private GameObject[] obstaclesStage3;
+    [SerializeField] private GameObject[] obstaclesStage4;
     private GameObject[][] obstacles;
     [SerializeField] private bool canSpawn;
     [SerializeField] private float waitToSpawn = 1.0f;
@@ -33,7 +37,7 @@ public class SpawnerScript : MonoBehaviour {
     };
 
     void Start() {
-        obstacles = new GameObject[][] { obstaclesEasy };
+        obstacles = new GameObject[][] { obstaclesStage0, obstaclesStage1, obstaclesStage2, obstaclesStage3, obstaclesStage4 };
     }
 
     // Update is called once per frame
