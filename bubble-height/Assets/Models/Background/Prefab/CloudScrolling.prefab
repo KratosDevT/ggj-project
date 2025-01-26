@@ -45,12 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69ee79496deabd94eab7137191a32692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableScrollXAxis: 0
-  enableScrollYAxis: 0
-  speedY: 1
-  speedX: 0
-  startPositionY: 30
-  startPositionX: 0
+  enableScrollXAxis: 1
+  enableScrollYAxis: 1
+  speedY: -1
+  speedX: 1
+  startPositionY: 50
+  startPositionX: -50
   currentPositionY: 10
   currentPositionX: 0
   currentPositionZ: 0
@@ -82,8 +82,8 @@ Transform:
   m_GameObject: {fileID: 4967347258898946907}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -5.44, y: 4.48, z: 0}
-  m_LocalScale: {x: 1.5756, y: 1, z: 1.3206829}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.6, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8223768734128260169}
