@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class BackgroundController : MonoBehaviour
@@ -12,6 +14,8 @@ public class BackgroundController : MonoBehaviour
     [SerializeField] private float speedX = 0.0f;
     [SerializeField] private float startPositionY = 0.0f;
     [SerializeField] private float startPositionX = 0.0f;
+
+    [SerializeField] List<Vector2> rangesToCheck = new List<Vector2>();
 
     [Header("Coordinate In visualizzazione")]
     [SerializeField] private float currentPositionY;
@@ -47,9 +51,28 @@ public class BackgroundController : MonoBehaviour
         speedY = speed;
     }
 
-    public float getCurrentHeight()
+    public int getCurrentStage()
     {
-        return transform.position.y;
+        return getStage();
+    }
+
+    private int getStage()
+    {
+        float currentY = transform.position.y;
+        int i = 0;
+        int stage = 0;
+        foreach (Vector2 range in rangesToCheck)
+        {
+            float minY = range.x;
+            float maxY = range.y;
+            if (currentY >= minY && currentY <= maxY)
+            {
+                stage = i;
+                break;
+            }
+            ++i;
+        }
+        return stage;
     }
 
     public void setBackgroundStartPosition()

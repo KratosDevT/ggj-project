@@ -1,12 +1,4 @@
-using System;
-using System.ComponentModel.Design;
-using NUnit.Framework.Internal;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Audio;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,14 +6,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject playerGameObject;
     [SerializeField] private GameObject backGroundGameObject;
     [SerializeField] private GameObject spawnerGameObject;
-    [SerializeField] private GameObject looseGameCanvas;
+    [SerializeField] private GameObject canvas;
     [SerializeField] private GameObject endText;
 
-    [SerializeField] private float[] bgHighLevels;
-    [SerializeField] private float backGroundVelocity;
-    [SerializeField] private float currentHeight = 0;
-    [SerializeField] private int stage = 0;
-    [SerializeField] private bool activeWinCondition = false;
     private static GameManager istance;
 
     private static float playerVelocityX;
@@ -35,26 +22,13 @@ public class GameManager : MonoBehaviour
     {
         istance = this;
         backgroundController = backGroundGameObject.GetComponent<BackgroundController>();
-        currentHeight = backgroundController.getCurrentHeight();
     }
 
     void Update()
     {
-        backgroundController.setSpeedY(backGroundVelocity);
-        currentHeight = backgroundController.getCurrentHeight();
-
-        //if (getCurrentStage() == bgHighLevels.Length) GameEndWin();
-        Debug.Log(backgroundController.getCurrentHeight());
-
         if (getDifficulty() == 5)
         {
-            Debug.Log("WIN!");
             GameEndWin();
-        }
-
-        if (activeWinCondition)
-        {
-            ProcessWinCondition();
         }
     }
 
@@ -73,7 +47,7 @@ public class GameManager : MonoBehaviour
 
     private static void GameEnd()
     {
-        istance.looseGameCanvas.SetActive(true);
+        istance.canvas.SetActive(true);
         istance.PauseGame();
         AudioManager.Play(0);
     }
@@ -96,10 +70,9 @@ public class GameManager : MonoBehaviour
     public void PlayAgain()
     {
         ObstaclePauser.DestroyElemets();
-        istance.looseGameCanvas.SetActive(false);
+        istance.canvas.SetActive(false);
         backgroundController.setBackgroundStartPosition();
         playerLife = 10;
-        stage = 0;
         istance.UnPauseGame();
         playerGameObject.transform.position = new Vector3(0, playerGameObject.transform.position.y, 0);
         playerGameObject.GetComponent<CharacterMovement>().GenerateBubbles(10);
@@ -122,15 +95,6 @@ public class GameManager : MonoBehaviour
 
     public static int getDifficulty()
     {
-        return istance.getCurrentStage();
-    }
-
-    private int getCurrentStage()
-    {
-        if (currentHeight < bgHighLevels[stage])
-        {
-            ++stage;
-        }
-        return stage;
+        return istance.backgroundController.getCurrentStage();
     }
 }
