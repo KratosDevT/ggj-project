@@ -5,7 +5,7 @@ public class ObstaclePauser : MonoBehaviour {
 
     private static List<GameObject> gameObjects = new List<GameObject>();
 
-    private void OnCollisionEnter2D(Collision2D collision) {
+    private void OnCollisionEnter(Collision collision) {
         gameObjects.Add(collision.gameObject);
     }
 

@@ -59,6 +59,6 @@ public class FourthObstacle : SecondObstacle
     }
     public override float GetSize()
     {
-        return GetComponent<CircleCollider2D>().radius;
+        return GetComponent<SphereCollider>().radius;
     }
 }

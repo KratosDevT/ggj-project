@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DestructorController : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnCollisionEnter(Collision other)
     {
 
         ObstaclePauser.UpdateElemet(other.gameObject);

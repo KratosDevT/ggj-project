@@ -51,7 +51,7 @@ public class ThirdObstacle : BaseObstacle
 
     public override float GetSize()
     {
-        return GetComponent<CircleCollider2D>().radius * transform.localScale.x;
+        return GetComponent<SphereCollider>().radius * transform.localScale.x;
         
     }
 }

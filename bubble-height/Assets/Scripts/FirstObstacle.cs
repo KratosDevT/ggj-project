@@ -26,6 +26,6 @@ public class FirstObstacle : BaseObstacle
 
     public override float GetSize() //the difference between the center of the collider and the edge on the x-axis
     {
-        return GetComponent<CircleCollider2D>().radius;
+        return GetComponent<SphereCollider>().radius;
     }
 }

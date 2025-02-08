@@ -8,7 +8,6 @@ public class CharacterMovement : MonoBehaviour
 
     [SerializeField]
     private float speed = 1.0f;
-    private Vector3 pos;
 
     //Array that contains all the bubbles (Max 10 bubbles)
     private List<GameObject> bubbles = new List<GameObject>();
@@ -32,13 +31,12 @@ public class CharacterMovement : MonoBehaviour
     }
 
 
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         transform.position = new Vector3(0, transform.position.y, transform.position.z);
 
-        radius = 2 * (GetComponent<CircleCollider2D>().radius);
+        radius = 2 * (GetComponent<SphereCollider>().radius);
         Debug.Log(radius);
 
         //Populate the bubbles array
@@ -59,15 +57,14 @@ public class CharacterMovement : MonoBehaviour
         x = Mathf.Clamp(x, leftBound, rightBound);
         transform.position = new Vector3(x, transform.position.y, transform.position.z);
 
-        //transform.position = pos;
         transform.Rotate(0, 0, speed * Time.deltaTime);
 
     }
 
-    //Physics2D.BoxCastAll -> Funzione pi� otimizzata che va in base al tempo che imposti tu
-    private void OnCollisionEnter2D(Collision2D collision)
+    //Physics2D.BoxCastAll -> Funzione piu otimizzata che va in base al tempo che imposti tu
+    private void OnCollisionEnter(Collision collision)
     {
-        float radiusCollider = GetComponent<CircleCollider2D>().radius;
+        float radiusCollider = GetComponent<SphereCollider>().radius;
 
         //If the timer is still going on, ignore the collision
         if (timer > 0f)
@@ -82,7 +79,7 @@ public class CharacterMovement : MonoBehaviour
         Destroy(bubble);
 
         radiusCollider -= 0.3f;
-        GetComponent<CircleCollider2D>().radius = radiusCollider;
+        GetComponent<SphereCollider>().radius = radiusCollider;
 
         //Return of the remaining HP
         GameManager.PlayerIsHit();
@@ -109,7 +106,7 @@ public class CharacterMovement : MonoBehaviour
 
         }
 
-        GetComponent<CircleCollider2D>().radius = 3;
+        GetComponent<SphereCollider>().radius = 3;
     }
 
 
