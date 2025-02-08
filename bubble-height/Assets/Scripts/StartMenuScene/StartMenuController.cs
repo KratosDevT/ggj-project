@@ -1,10 +1,12 @@
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class StartMenuController : MonoBehaviour
 {
-    public void onClick() {
-        SceneManager.LoadSceneAsync("GameScene");
+    public void StartGame()
+    {
+        Debug.Log("start game");
+        SceneManager.LoadScene(1);
     }
 }
