@@ -47,13 +47,5 @@ MonoBehaviour:
   playerGameObject: {fileID: 0}
   backGroundGameObject: {fileID: 0}
   spawnerGameObject: {fileID: 0}
-  looseGameCanvas: {fileID: 0}
-  bgHighLevels:
-  - 21
-  - 6
-  - -7
-  - -20
-  - -9999
-  backGroundVelocity: -0.7
-  currentHeight: 0
-  stage: 0
+  canvas: {fileID: 0}
+  endText: {fileID: 0}
