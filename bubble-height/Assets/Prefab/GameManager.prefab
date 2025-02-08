@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 425b6a81647c2734b9aa06a240747d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerGameObject: {fileID: 0}
-  backGroundGameObject: {fileID: 0}
-  spawnerGameObject: {fileID: 0}
-  canvas: {fileID: 0}
-  endText: {fileID: 0}
+  playerGameObject: {fileID: 7100042660809750036, guid: dc07d85698ce99b4c8762cb6135c1d66, type: 3}
+  backGroundGameObject: {fileID: 2786136318077129785, guid: 89f872d0a86f6574da1e18c63b91c7a5, type: 3}
+  spawnerGameObject: {fileID: 6277743635897663691, guid: f02f947b508c2fb409da05391598c051, type: 3}
+  canvas: {fileID: 673130826723282981, guid: 399806e5cf1a72b4ca2efe7eca1671b8, type: 3}
+  endText: {fileID: 5886126280655446349, guid: 4bcee005a1cba834aa085201d418288a, type: 3}
