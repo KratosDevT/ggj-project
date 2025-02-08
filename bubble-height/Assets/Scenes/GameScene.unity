@@ -841,6 +841,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1186599035810567970, guid: 89f872d0a86f6574da1e18c63b91c7a5, type: 3}
+      propertyPath: rangesToCheck.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1186599035810567970, guid: 89f872d0a86f6574da1e18c63b91c7a5, type: 3}
+      propertyPath: 'rangesToCheck.Array.data[0]'
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1186599035810567970, guid: 89f872d0a86f6574da1e18c63b91c7a5, type: 3}
+      propertyPath: 'rangesToCheck.Array.data[1]'
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1186599035810567970, guid: 89f872d0a86f6574da1e18c63b91c7a5, type: 3}
+      propertyPath: 'rangesToCheck.Array.data[2]'
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1186599035810567970, guid: 89f872d0a86f6574da1e18c63b91c7a5, type: 3}
+      propertyPath: 'rangesToCheck.Array.data[3]'
+      value: -30
+      objectReference: {fileID: 0}
     - target: {fileID: 2786136318077129785, guid: 89f872d0a86f6574da1e18c63b91c7a5, type: 3}
       propertyPath: m_Name
       value: Bg
