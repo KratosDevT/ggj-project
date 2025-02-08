@@ -139,7 +139,7 @@ MonoBehaviour:
   startPositionY: 29
   startPositionX: 0
   rangesToCheck:
-  - 20
+  - 27
   - 6
   - -10
   - -30

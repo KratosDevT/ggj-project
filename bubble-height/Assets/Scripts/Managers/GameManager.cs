@@ -9,35 +9,69 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject canvas;
     [SerializeField] private GameObject endText;
 
-    private static GameManager istance;
-
-    private static float playerVelocityX;
-    private static int playerLife = 10;
-
-
+    public static GameManager Instance { get; private set; }
+    public GameState currentGameState { get; private set; }
+    public int stage { get; private set; }
+    public bool isGameOver { get; private set; }
+    public float playerVelocityX { get; private set; }
+    private int playerLife = 10;
     private BackgroundController backgroundController;
+
+    public enum GameState
+    {
+        Menu,
+        Playing,
+        Paused,
+        GameOver
+    }
+
+    private void Awake()
+    {
+        // Implementazione Singleton
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        InitializeGame();
+    }
+
+    private void InitializeGame()
+    {
+        currentGameState = GameState.Playing;
+        stage = 0;
+        isGameOver = false;
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        istance = this;
         backgroundController = backGroundGameObject.GetComponent<BackgroundController>();
     }
 
     void Update()
     {
-        if (getDifficulty() == 5)
-        {
-            GameEndWin();
-        }
+        updateStage();
     }
 
-    public static float getPlayerVelocityX()
+    private void updateStage()
+    {
+        stage = backgroundController.stage;
+
+        Debug.Log("stage GM:" + stage);
+    }
+
+    public float getPlayerVelocityX()
     {
         return playerVelocityX;
     }
 
-    public static int PlayerIsHit()
+    public int PlayerIsHit()
     {
         if (--playerLife < 1) GameEnd();
         if (playerLife % 2 == 0) AudioManager.PlayLoop((playerLife / 2) + 1);
@@ -45,35 +79,35 @@ public class GameManager : MonoBehaviour
         return playerLife;
     }
 
-    private static void GameEnd()
+    private void GameEnd()
     {
-        istance.canvas.SetActive(true);
-        istance.PauseGame();
+        canvas.SetActive(true);
+        PauseGame();
         AudioManager.Play(0);
     }
 
-    private static void GameEndWin()
+    private void GameEndWin()
     {
-        istance.PauseGame();
+        PauseGame();
         AudioManager.PlayLoop(0);
         ObstaclePauser.DestroyElemets();
-        Destroy(istance.playerGameObject);
+        Destroy(playerGameObject);
         AudioManager.Play(1);
         ProcessWinCondition();
     }
 
-    private static void ProcessWinCondition()
+    private void ProcessWinCondition()
     {
-        istance.endText.SetActive(true);
+        endText.SetActive(true);
     }
 
     public void PlayAgain()
     {
         ObstaclePauser.DestroyElemets();
-        istance.canvas.SetActive(false);
+        canvas.SetActive(false);
         backgroundController.setBackgroundStartPosition();
         playerLife = 10;
-        istance.UnPauseGame();
+        UnPauseGame();
         playerGameObject.transform.position = new Vector3(0, playerGameObject.transform.position.y, 0);
         playerGameObject.GetComponent<CharacterMovement>().GenerateBubbles(10);
     }
@@ -93,8 +127,5 @@ public class GameManager : MonoBehaviour
         playerGameObject.GetComponent<CharacterMovement>().enabled = true;
     }
 
-    public static int getDifficulty()
-    {
-        return istance.backgroundController.getCurrentStage();
-    }
+
 }

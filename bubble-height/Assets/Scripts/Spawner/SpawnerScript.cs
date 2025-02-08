@@ -1,14 +1,10 @@
 using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Runtime.CompilerServices;
-using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
 using Color = UnityEngine.Color;
 using Random = UnityEngine.Random;
 
-public class SpawnerScript : MonoBehaviour {
+public class SpawnerScript : MonoBehaviour
+{
 
     [SerializeField] private GameObject[] obstaclesStage0;
     [SerializeField] private GameObject[] obstaclesStage1;
@@ -19,45 +15,49 @@ public class SpawnerScript : MonoBehaviour {
     [SerializeField] private bool canSpawn;
     [SerializeField] private float waitToSpawn = 1.0f;
     private GameObject lastSpawnedGameObject = null;
-    Range lastRange = new Range() {
+    Range lastRange = new Range()
+    {
         xMin = -5000,
         xMax = -4999
     };
 
 
 
-    private struct Range {
+    private struct Range
+    {
         public float xMin;
         public float xMax;
-        public readonly bool IsInside(float x) {
+        public readonly bool IsInside(float x)
+        {
             return x > xMin && x < xMax;
         }
 
         public readonly float center { get { return (xMin + xMax) / 2; } }
     };
 
-    void Start() {
+    void Start()
+    {
         obstacles = new GameObject[][] { obstaclesStage0, obstaclesStage1, obstaclesStage2, obstaclesStage3, obstaclesStage4 };
     }
 
     // Update is called once per frame
-    void Update() {
-
+    void Update()
+    {
         if (!canSpawn) return;
 
         waitToSpawn -= Time.deltaTime;
 
         if (waitToSpawn > 0.0f) return;
 
-        int currentLevel = GameManager.getDifficulty();
-        Debug.Log(currentLevel);
+        int currentLevel = GameManager.Instance.stage;
+        Debug.Log("stage Spawner:" + currentLevel);
 
         int obstacleLen = obstacles[currentLevel].Length;
 
         GameObject obstacleGameObject = lastSpawnedGameObject;
 
         obstacleGameObject = obstacles[currentLevel][Random.Range(0, obstacleLen)];
-        
+
         /*while (obstacleGameObject == lastSpawnedGameObject) {
             int randomObstacle = Random.Range(0, obstacleLen);
             Debug.Log(randomObstacle);
@@ -70,7 +70,7 @@ public class SpawnerScript : MonoBehaviour {
         BaseObstacle lastSpawned = null;
 
         const float characterPositionX = 0;
-        float characterVelocityX = GameManager.getPlayerVelocityX();
+        float characterVelocityX = GameManager.Instance.playerVelocityX;
         float obstacleVelocityY = obstacle.GetSpeed();
         float obstacleSize = obstacle.GetSize();
         float lastSpawnedSize = 0;
@@ -78,14 +78,16 @@ public class SpawnerScript : MonoBehaviour {
         float leftMargin = Camera.main.transform.position.x - (Camera.main.orthographicSize * Camera.main.aspect) + obstacleSize;
         float rightMargin = Camera.main.transform.position.x + (Camera.main.orthographicSize * Camera.main.aspect) - obstacleSize;
 
-        if (lastSpawnedGameObject != null) {
+        if (lastSpawnedGameObject != null)
+        {
             lastSpawned = lastSpawnedGameObject.GetComponent<BaseObstacle>();
             lastSpawnedSize = lastSpawned.GetSize();
         }
 
         float secondToReach = (transform.position.x - characterPositionX) / obstacleVelocityY;
         float possibleDistance = characterVelocityX * secondToReach;
-        Range impossibleRange = new() {
+        Range impossibleRange = new()
+        {
             xMin = Convert.ToInt32(possibleDistance <= obstacleSize) * (characterPositionX - obstacleSize),
             xMax = Convert.ToInt32(possibleDistance <= obstacleSize) * (characterPositionX + obstacleSize)
         };
@@ -107,7 +109,8 @@ public class SpawnerScript : MonoBehaviour {
         obstacleSpawed.transform.position = new Vector3(random, transform.position.y, 0);
         lastSpawnedGameObject = obstacleGameObject;
 
-        lastRange = new() {
+        lastRange = new()
+        {
             xMin = obstacleSpawed.transform.position.x - lastSpawnedSize,
             xMax = obstacleSpawed.transform.position.x + lastSpawnedSize
         };

@@ -37,7 +37,7 @@ public class CharacterMovement : MonoBehaviour
         transform.position = new Vector3(0, transform.position.y, transform.position.z);
 
         radius = 2 * (GetComponent<SphereCollider>().radius);
-        Debug.Log(radius);
+
 
         //Populate the bubbles array
         GenerateBubbles(numberOfBubbles);
@@ -70,9 +70,6 @@ public class CharacterMovement : MonoBehaviour
         if (timer > 0f)
             return;
         timer = 3;    //Invincible for timer time
-
-        Debug.Log("Hit");
-
         GameObject bubble = bubbles[bubbles.Count - 1];
 
         bubbles.Remove(bubble);
@@ -82,7 +79,7 @@ public class CharacterMovement : MonoBehaviour
         GetComponent<SphereCollider>().radius = radiusCollider;
 
         //Return of the remaining HP
-        GameManager.PlayerIsHit();
+        GameManager.Instance.PlayerIsHit();
     }
 
     public void GenerateBubbles(int howManyBubbles)

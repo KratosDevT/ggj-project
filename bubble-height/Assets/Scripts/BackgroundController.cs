@@ -16,12 +16,12 @@ public class BackgroundController : MonoBehaviour
     [SerializeField] private float startPositionX = 0.0f;
 
     [SerializeField] List<float> rangesToCheck = new List<float>();
+    public int stage = 0;
 
     [Header("Coordinate In visualizzazione")]
     [SerializeField] private float currentPositionY;
     [SerializeField] private float currentPositionX;
     [SerializeField] private float currentPositionZ;
-    [SerializeField] private int stage = 0;
 
     private void Start()
     {
@@ -45,7 +45,8 @@ public class BackgroundController : MonoBehaviour
         }
 
         this.gameObject.transform.position = new Vector3(currentPositionX, currentPositionY, currentPositionZ);
-        UpdateStage();
+        stage = getCurrentStage();
+        Debug.Log("stage:" + stage);
     }
 
     public void setSpeedY(float speed)
@@ -55,14 +56,15 @@ public class BackgroundController : MonoBehaviour
 
     public int getCurrentStage()
     {
-        return stage;
-    }
-
-    private void UpdateStage()
-    {
-        Debug.Log("stage:" + stage);
-        if (!(transform.position.y > rangesToCheck[stage]))
+        // Debug.Log("range:" + rangesToCheck[stage]);
+        // Debug.Log("transform.position.y:" + this.gameObject.transform.position.y);
+        //Debug.Log(this.gameObject.transform.position.y < rangesToCheck[stage]);
+        if (this.gameObject.transform.position.y < rangesToCheck[stage])
+        {
             ++stage;
+        }
+
+        return stage;
     }
 
     public void setBackgroundStartPosition()
