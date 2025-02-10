@@ -21,8 +21,6 @@ public class SpawnerScript : MonoBehaviour
         xMax = -4999
     };
 
-
-
     private struct Range
     {
         public float xMin;
@@ -35,18 +33,18 @@ public class SpawnerScript : MonoBehaviour
         public readonly float center { get { return (xMin + xMax) / 2; } }
     };
 
-    void Start()
+    private void Start()
     {
         obstacles = new GameObject[][] { obstaclesStage0, obstaclesStage1, obstaclesStage2, obstaclesStage3, obstaclesStage4 };
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (!canSpawn) return;
 
         waitToSpawn -= Time.deltaTime;
-
+        Debug.Log("waitToSpawn Spawner:" + waitToSpawn);
         if (waitToSpawn > 0.0f) return;
 
         int currentLevel = GameManager.Instance.GetStage();

@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public bool isGameOver { get; private set; }
     public float playerVelocityX { get; private set; }
     private int playerLife = 10;
-    private int stage = 0;
+    [SerializeField] private int stage = 0;
     public enum GameState
     {
         Menu,

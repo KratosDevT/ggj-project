@@ -46,7 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstaclesStage0:
   - {fileID: 6255789770647282977, guid: 373dce8ccf8be514ca74562b3a81be04, type: 3}
-  - {fileID: 2437864055259887606, guid: 5669eb94a40434f438a6af14ce2bad9b, type: 3}
   obstaclesStage1:
   - {fileID: 3135863855272186372, guid: bbcab75dd1846c040b0cb371a1354dad, type: 3}
   obstaclesStage2:
@@ -54,6 +53,6 @@ MonoBehaviour:
   obstaclesStage3:
   - {fileID: 2437864055259887606, guid: 5669eb94a40434f438a6af14ce2bad9b, type: 3}
   obstaclesStage4:
-  - {fileID: 5414943570243974384, guid: 9ea22d500ee6402438c26c879fd8326e, type: 3}
+  - {fileID: 3378066696979275459, guid: 1bbc5cb4e86fc2f458d7d5d5603c7529, type: 3}
   canSpawn: 1
   waitToSpawn: 1
