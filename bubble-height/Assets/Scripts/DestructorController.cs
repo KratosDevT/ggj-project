@@ -2,10 +2,9 @@ using UnityEngine;
 
 public class DestructorController : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
-
-        ObstaclePauser.UpdateElemet(other.gameObject);
+        Debug.Log("destroy:" + other.gameObject.name);
         Destroy(other.gameObject);
     }
 }

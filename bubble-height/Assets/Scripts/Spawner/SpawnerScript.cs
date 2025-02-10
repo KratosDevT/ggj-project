@@ -12,7 +12,7 @@ public class SpawnerScript : MonoBehaviour
     [SerializeField] private GameObject[] obstaclesStage3;
     [SerializeField] private GameObject[] obstaclesStage4;
     private GameObject[][] obstacles;
-    [SerializeField] private bool canSpawn;
+    [SerializeField] private bool canSpawn = true;
     [SerializeField] private float waitToSpawn = 1.0f;
     private GameObject lastSpawnedGameObject = null;
     Range lastRange = new Range()
@@ -44,7 +44,7 @@ public class SpawnerScript : MonoBehaviour
         if (!canSpawn) return;
 
         waitToSpawn -= Time.deltaTime;
-        Debug.Log("waitToSpawn Spawner:" + waitToSpawn);
+
         if (waitToSpawn > 0.0f) return;
 
         int currentLevel = GameManager.Instance.GetStage();
