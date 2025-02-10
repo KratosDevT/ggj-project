@@ -10,7 +10,7 @@ public class CloudActivator : MonoBehaviour
 
     void Update()
     {
-        int stage = GameManager.Instance.stage;
+        int stage = GameManager.Instance.GetStage();
         if (stage == 3)
         {
             bgcontroller.activateScrollXAxis();

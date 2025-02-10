@@ -49,7 +49,7 @@ public class SpawnerScript : MonoBehaviour
 
         if (waitToSpawn > 0.0f) return;
 
-        int currentLevel = GameManager.Instance.stage;
+        int currentLevel = GameManager.Instance.GetStage();
         Debug.Log("stage Spawner:" + currentLevel);
 
         int obstacleLen = obstacles[currentLevel].Length;

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class BackgroundController : MonoBehaviour
@@ -16,7 +15,6 @@ public class BackgroundController : MonoBehaviour
     [SerializeField] private float startPositionX = 0.0f;
 
     [SerializeField] List<float> rangesToCheck = new List<float>();
-    public int stage = 0;
 
     [Header("Coordinate In visualizzazione")]
     [SerializeField] private float currentPositionY;
@@ -27,8 +25,8 @@ public class BackgroundController : MonoBehaviour
     {
         currentPositionY = startPositionY;
         currentPositionX = startPositionX;
-        currentPositionZ = this.gameObject.transform.position.z;
-        this.gameObject.transform.position = new Vector3(currentPositionX, currentPositionY, currentPositionZ);
+        currentPositionZ = transform.position.z;
+        transform.position = new Vector3(currentPositionX, currentPositionY, currentPositionZ);
     }
 
 
@@ -44,9 +42,7 @@ public class BackgroundController : MonoBehaviour
             currentPositionX += speedX * Time.deltaTime;
         }
 
-        this.gameObject.transform.position = new Vector3(currentPositionX, currentPositionY, currentPositionZ);
-        stage = getCurrentStage();
-        Debug.Log("stage:" + stage);
+        transform.position = new Vector3(currentPositionX, currentPositionY, currentPositionZ);
     }
 
     public void setSpeedY(float speed)
@@ -54,27 +50,19 @@ public class BackgroundController : MonoBehaviour
         speedY = speed;
     }
 
-    public int getCurrentStage()
-    {
-        // Debug.Log("range:" + rangesToCheck[stage]);
-        // Debug.Log("transform.position.y:" + this.gameObject.transform.position.y);
-        //Debug.Log(this.gameObject.transform.position.y < rangesToCheck[stage]);
-        if (this.gameObject.transform.position.y < rangesToCheck[stage])
-        {
-            ++stage;
-        }
-
-        return stage;
-    }
-
     public void setBackgroundStartPosition()
     {
-        this.gameObject.transform.position = new Vector3(0, startPositionY, currentPositionZ);
+        transform.position = new Vector3(0, startPositionY, currentPositionZ);
         currentPositionY = startPositionY;
     }
 
     internal void activateScrollXAxis()
     {
         enableScrollXAxis = true;
+    }
+
+    internal float GetRangeForStage(int stage)
+    {
+        return rangesToCheck[stage];
     }
 }

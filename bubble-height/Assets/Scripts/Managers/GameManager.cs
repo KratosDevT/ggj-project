@@ -1,22 +1,21 @@
+using System;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
 
     [SerializeField] private GameObject playerGameObject;
-    [SerializeField] private GameObject backGroundGameObject;
+    [SerializeField] private BackgroundController backGroundGameObject;
     [SerializeField] private GameObject spawnerGameObject;
     [SerializeField] private GameObject canvas;
     [SerializeField] private GameObject endText;
 
     public static GameManager Instance { get; private set; }
     public GameState currentGameState { get; private set; }
-    public int stage { get; private set; }
     public bool isGameOver { get; private set; }
     public float playerVelocityX { get; private set; }
     private int playerLife = 10;
-    private BackgroundController backgroundController;
-
+    private int stage = 0;
     public enum GameState
     {
         Menu,
@@ -44,26 +43,30 @@ public class GameManager : MonoBehaviour
     private void InitializeGame()
     {
         currentGameState = GameState.Playing;
-        stage = 0;
         isGameOver = false;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        backgroundController = backGroundGameObject.GetComponent<BackgroundController>();
+
     }
 
     void Update()
     {
         updateStage();
+        Debug.Log(stage);
     }
 
-    private void updateStage()
+    public void updateStage()
     {
-        stage = backgroundController.stage;
-
-        Debug.Log("stage GM:" + stage);
+        // Debug.Log("range:" + rangesToCheck[stage]);
+        // Debug.Log("transform.position.y:" + this.gameObject.transform.position.y);
+        //Debug.Log(this.gameObject.transform.position.y < rangesToCheck[stage]);
+        if (backGroundGameObject.transform.position.y < backGroundGameObject.GetRangeForStage(stage))
+        {
+            stage++;
+        }
     }
 
     public float getPlayerVelocityX()
@@ -105,7 +108,7 @@ public class GameManager : MonoBehaviour
     {
         ObstaclePauser.DestroyElemets();
         canvas.SetActive(false);
-        backgroundController.setBackgroundStartPosition();
+        //backGroundGameObject.GetComponent<BackgroundController>().setBackgroundStartPosition();
         playerLife = 10;
         UnPauseGame();
         playerGameObject.transform.position = new Vector3(0, playerGameObject.transform.position.y, 0);
@@ -116,16 +119,19 @@ public class GameManager : MonoBehaviour
     {
         ObstaclePauser.PauseElemets();
         spawnerGameObject.GetComponent<SpawnerScript>().disableSpawn();
-        backgroundController.enabled = false;
+        //backgroundController.enabled = false;
         playerGameObject.GetComponent<CharacterMovement>().enabled = false;
     }
 
     private void UnPauseGame()
     {
         spawnerGameObject.GetComponent<SpawnerScript>().enableSpawn();
-        backgroundController.enabled = true;
+        //backgroundController.enabled = true;
         playerGameObject.GetComponent<CharacterMovement>().enabled = true;
     }
 
-
+    internal int GetStage()
+    {
+        return stage;
+    }
 }
