@@ -61,8 +61,7 @@ public class CharacterMovement : MonoBehaviour
 
     }
 
-    //Physics2D.BoxCastAll -> Funzione piu otimizzata che va in base al tempo che imposti tu
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         float radiusCollider = GetComponent<SphereCollider>().radius;
 
@@ -85,10 +84,7 @@ public class CharacterMovement : MonoBehaviour
     public void GenerateBubbles(int howManyBubbles)
     {
         //numberOfBubbles = howManyBubbles;
-
-
         float segment = (2 * Mathf.PI) / (howManyBubbles - 1);
-
 
         for (int i = 0; i < howManyBubbles; i++)
         {
@@ -100,11 +96,7 @@ public class CharacterMovement : MonoBehaviour
 
             //All sons of the parent gameObject CharacterMovement
             bubbles.Add(Instantiate(bubblePrefab, new Vector3(x, y, 0), Quaternion.identity, transform));
-
         }
-
         GetComponent<SphereCollider>().radius = 3;
     }
-
-
 }

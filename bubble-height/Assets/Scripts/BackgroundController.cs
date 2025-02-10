@@ -43,6 +43,7 @@ public class BackgroundController : MonoBehaviour
         }
 
         transform.position = new Vector3(currentPositionX, currentPositionY, currentPositionZ);
+      //  Debug.Log("BGContr transform.position.y:" + transform.position.y);
     }
 
     public void setSpeedY(float speed)
@@ -56,12 +57,12 @@ public class BackgroundController : MonoBehaviour
         currentPositionY = startPositionY;
     }
 
-    internal void activateScrollXAxis()
+    public void activateScrollXAxis()
     {
         enableScrollXAxis = true;
     }
 
-    internal float GetRangeForStage(int stage)
+    public float GetRangeForStage(int stage)
     {
         return rangesToCheck[stage];
     }

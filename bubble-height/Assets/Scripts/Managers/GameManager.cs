@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour
 {
 
     [SerializeField] private GameObject playerGameObject;
-    [SerializeField] private BackgroundController backGroundGameObject;
+    [SerializeField] private GameObject backGroundGameObject;
     [SerializeField] private GameObject spawnerGameObject;
     [SerializeField] private GameObject canvas;
     [SerializeField] private GameObject endText;
@@ -49,22 +49,26 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        Debug.Log("GM Background object: " + backGroundGameObject.name);
     }
 
     void Update()
     {
         updateStage();
-        Debug.Log(stage);
+        Debug.Log("GM stage:" + stage);
     }
 
     public void updateStage()
     {
-        // Debug.Log("range:" + rangesToCheck[stage]);
-        // Debug.Log("transform.position.y:" + this.gameObject.transform.position.y);
-        //Debug.Log(this.gameObject.transform.position.y < rangesToCheck[stage]);
-        if (backGroundGameObject.transform.position.y < backGroundGameObject.GetRangeForStage(stage))
+        var backgroundController = backGroundGameObject.GetComponent<BackgroundController>();
+        float currentY = backGroundGameObject.transform.position.y;
+        float rangeForStage = backgroundController.GetRangeForStage(stage);
+
+        //Debug.Log($"Checking - Current Y: {currentY} vs Range: {rangeForStage}");
+
+        if (currentY < rangeForStage)
         {
+            //Debug.Log($"Incrementing stage from {stage} to {stage + 1}");
             stage++;
         }
     }
@@ -130,7 +134,7 @@ public class GameManager : MonoBehaviour
         playerGameObject.GetComponent<CharacterMovement>().enabled = true;
     }
 
-    internal int GetStage()
+    public int GetStage()
     {
         return stage;
     }
