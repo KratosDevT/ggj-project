@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 4444075954674439887}
   - component: {fileID: 2730274870779519676}
   m_Layer: 5
-  m_Name: GameEndLoose
+  m_Name: LoseCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

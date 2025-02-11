@@ -11,7 +11,7 @@ public class BollaController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("collision:" + other.gameObject.name);
+        Debug.Log("triggerEnter:" + other.gameObject.name);
         characterController.HandlePlayerHit(1, gameObject);
     }
 }
