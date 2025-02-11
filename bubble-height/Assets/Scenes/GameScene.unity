@@ -964,6 +964,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 956500305}
     - target: {fileID: 8713099809502120001, guid: e2bf848df6b2d9e489edf42b7d3c0f5d, type: 3}
+      propertyPath: playerMaxLife
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8713099809502120001, guid: e2bf848df6b2d9e489edf42b7d3c0f5d, type: 3}
       propertyPath: playerGameObject
       value: 
       objectReference: {fileID: 1513449849}

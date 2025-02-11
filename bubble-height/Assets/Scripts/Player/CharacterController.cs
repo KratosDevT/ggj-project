@@ -55,16 +55,25 @@ public class CharacterController : MonoBehaviour
             bubbles.Add(Instantiate(bubblePrefab, new Vector3(x, y, transform.position.z), Quaternion.identity, transform));
         }
     }
-    public void HandlePlayerHit(int damage, GameObject gameObject)
+
+    public void HandlePlayerHit(int damage, GameObject bolla)
     {
         if (isInvulnerable) return;
         TakeDamage(damage);
         StartCoroutine(PeaceTimeCoroutine());
-        Destroy(gameObject);
+        Destroy(bolla);
     }
+
     private void TakeDamage(int damage)
     {
         GameManager.Instance.DamagePlayer(damage);
+    }
+
+    private IEnumerator PeaceTimeCoroutine()
+    {
+        isInvulnerable = true;
+        yield return new WaitForSeconds(invincibleTimeInSeconds);
+        isInvulnerable = false;
     }
 
     public void SetHp(int playerCurrentLife)
@@ -75,11 +84,5 @@ public class CharacterController : MonoBehaviour
     public float GetSpeed()
     {
         return speed;
-    }
-    private IEnumerator PeaceTimeCoroutine()
-    {
-        isInvulnerable = true;
-        yield return new WaitForSeconds(invincibleTimeInSeconds);
-        isInvulnerable = false;
     }
 }
