@@ -964,10 +964,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 956500305}
     - target: {fileID: 8713099809502120001, guid: e2bf848df6b2d9e489edf42b7d3c0f5d, type: 3}
-      propertyPath: playerMaxLife
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8713099809502120001, guid: e2bf848df6b2d9e489edf42b7d3c0f5d, type: 3}
       propertyPath: playerGameObject
       value: 
       objectReference: {fileID: 1513449849}
@@ -992,10 +988,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2766224905495384535, guid: dc07d85698ce99b4c8762cb6135c1d66, type: 3}
-      propertyPath: speed
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 3958627647892956533, guid: dc07d85698ce99b4c8762cb6135c1d66, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

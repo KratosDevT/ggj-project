@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b1f641d617ecb44a29c28f01dfe8ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 14
+  speed: 25
   hp: 0
   radius: 0
   invincibleTimeInSeconds: 2
