@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int playerCurrentLife;
     [SerializeField] private int playerMaxLife = 10;
     [SerializeField] private int currentStage = 0;
-    private float bgSpeed;
+    [SerializeField] private float backgroundSpeed;
     private BackgroundController backgroundController;
 
     public enum GameState
@@ -47,21 +47,18 @@ public class GameManager : MonoBehaviour
     {
         playerCurrentLife = playerMaxLife;
         currentGameState = GameState.Playing;
-        playerGameObject.GetComponent<CharacterMovement>().SetHp(playerCurrentLife);
+        playerGameObject.GetComponent<CharacterController>().SetHp(playerCurrentLife);
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
         backgroundController = backgroundGameObject.GetComponent<BackgroundController>();
-        bgSpeed = backgroundController.GetSpeedY();
+        backgroundSpeed = backgroundController.GetSpeedY();
     }
 
     void Update()
     {
         updateStage();
-        Debug.Log("GM stage:" + currentStage);
     }
 
     public void updateStage()
@@ -72,6 +69,7 @@ public class GameManager : MonoBehaviour
         if (currentY < rangeForNextStage)
         {
             currentStage += 1;
+            Debug.Log("GM currentStage:" + currentStage);
         }
     }
 
@@ -113,7 +111,7 @@ public class GameManager : MonoBehaviour
         playerCurrentLife = playerMaxLife;
         UnPauseGame();
         playerGameObject.transform.position = new Vector3(0, playerGameObject.transform.position.y, 0);
-        playerGameObject.GetComponent<CharacterMovement>().GenerateBubbles(10);
+        playerGameObject.GetComponent<CharacterController>().GenerateBubbles(10);
     }
 
     private void PauseGame()
@@ -121,14 +119,14 @@ public class GameManager : MonoBehaviour
         ObstaclePauser.PauseElemets();
         spawnerGameObject.GetComponent<SpawnerScript>().disableSpawn();
         backgroundGameObject.GetComponent<BackgroundController>().setSpeedY(0);
-        playerGameObject.GetComponent<CharacterMovement>().enabled = false;
+        playerGameObject.GetComponent<CharacterController>().enabled = false;
     }
 
     private void UnPauseGame()
     {
         spawnerGameObject.GetComponent<SpawnerScript>().enableSpawn();
-        playerGameObject.GetComponent<CharacterMovement>().enabled = true;
-        backgroundGameObject.GetComponent<BackgroundController>().setSpeedY(bgSpeed);
+        playerGameObject.GetComponent<CharacterController>().enabled = true;
+        backgroundGameObject.GetComponent<BackgroundController>().setSpeedY(backgroundSpeed);
     }
 
     public int GetStage()
