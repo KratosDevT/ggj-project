@@ -5,20 +5,23 @@ public class GameManager : MonoBehaviour
 {
 
     [SerializeField] private GameObject playerGameObject;
-    [SerializeField] private GameObject backGroundGameObject;
+    [SerializeField] private GameObject backgroundGameObject;
     [SerializeField] private GameObject spawnerGameObject;
-    [SerializeField] private GameObject canvas;
-    [SerializeField] private GameObject endText;
+    [SerializeField] private GameObject winCanvas;
+    [SerializeField] private GameObject loseCanvas;
 
     public static GameManager Instance { get; private set; }
     public GameState currentGameState { get; private set; }
-    public bool isGameOver { get; private set; }
-    public float playerVelocityX { get; private set; }
-    private int playerLife = 10;
-    [SerializeField] private int stage = 0;
+
+    [SerializeField] private int playerCurrentLife;
+    [SerializeField] private int playerMaxLife = 10;
+    [SerializeField] private int currentStage = 0;
+    private float bgSpeed;
+    private BackgroundController backgroundController;
+
     public enum GameState
     {
-        Menu,
+        StartMenu,
         Playing,
         Paused,
         GameOver
@@ -42,53 +45,47 @@ public class GameManager : MonoBehaviour
 
     private void InitializeGame()
     {
+        playerCurrentLife = playerMaxLife;
         currentGameState = GameState.Playing;
-        isGameOver = false;
+        playerGameObject.GetComponent<CharacterMovement>().SetHp(playerCurrentLife);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Debug.Log("GM Background object: " + backGroundGameObject.name);
+
+        backgroundController = backgroundGameObject.GetComponent<BackgroundController>();
+        bgSpeed = backgroundController.GetSpeedY();
     }
 
     void Update()
     {
         updateStage();
-        Debug.Log("GM stage:" + stage);
+        Debug.Log("GM stage:" + currentStage);
     }
 
     public void updateStage()
     {
-        var backgroundController = backGroundGameObject.GetComponent<BackgroundController>();
-        float currentY = backGroundGameObject.transform.position.y;
-        float rangeForStage = backgroundController.GetRangeForStage(stage);
+        float currentY = backgroundGameObject.transform.position.y;
+        float rangeForNextStage = backgroundController.GetRangeForStage(currentStage);
 
-        //Debug.Log($"Checking - Current Y: {currentY} vs Range: {rangeForStage}");
-
-        if (currentY < rangeForStage)
+        if (currentY < rangeForNextStage)
         {
-            //Debug.Log($"Incrementing stage from {stage} to {stage + 1}");
-            stage++;
+            currentStage += 1;
         }
     }
 
-    public float getPlayerVelocityX()
+    public void DamagePlayer(int damage)
     {
-        return playerVelocityX;
-    }
-
-    public int PlayerIsHit()
-    {
-        if (--playerLife < 1) GameEnd();
-        if (playerLife % 2 == 0) AudioManager.PlayLoop((playerLife / 2) + 1);
+        playerCurrentLife -= damage;
+        if (playerCurrentLife < 1) GameEnd();
+        if (playerCurrentLife % 2 == 0) AudioManager.PlayLoop((playerCurrentLife / 2) + 1);
         AudioManager.Play(1);
-        return playerLife;
     }
 
     private void GameEnd()
     {
-        canvas.SetActive(true);
+        loseCanvas.SetActive(true);
         PauseGame();
         AudioManager.Play(0);
     }
@@ -105,15 +102,15 @@ public class GameManager : MonoBehaviour
 
     private void ProcessWinCondition()
     {
-        endText.SetActive(true);
+        winCanvas.SetActive(true);
     }
 
     public void PlayAgain()
     {
         ObstaclePauser.DestroyElemets();
-        canvas.SetActive(false);
-        //backGroundGameObject.GetComponent<BackgroundController>().setBackgroundStartPosition();
-        playerLife = 10;
+        loseCanvas.SetActive(false);
+        winCanvas.SetActive(false);
+        playerCurrentLife = playerMaxLife;
         UnPauseGame();
         playerGameObject.transform.position = new Vector3(0, playerGameObject.transform.position.y, 0);
         playerGameObject.GetComponent<CharacterMovement>().GenerateBubbles(10);
@@ -123,19 +120,19 @@ public class GameManager : MonoBehaviour
     {
         ObstaclePauser.PauseElemets();
         spawnerGameObject.GetComponent<SpawnerScript>().disableSpawn();
-        //backgroundController.enabled = false;
+        backgroundGameObject.GetComponent<BackgroundController>().setSpeedY(0);
         playerGameObject.GetComponent<CharacterMovement>().enabled = false;
     }
 
     private void UnPauseGame()
     {
         spawnerGameObject.GetComponent<SpawnerScript>().enableSpawn();
-        //backgroundController.enabled = true;
         playerGameObject.GetComponent<CharacterMovement>().enabled = true;
+        backgroundGameObject.GetComponent<BackgroundController>().setSpeedY(bgSpeed);
     }
 
     public int GetStage()
     {
-        return stage;
+        return currentStage;
     }
 }

@@ -43,12 +43,16 @@ public class BackgroundController : MonoBehaviour
         }
 
         transform.position = new Vector3(currentPositionX, currentPositionY, currentPositionZ);
-      //  Debug.Log("BGContr transform.position.y:" + transform.position.y);
+        //  Debug.Log("BGContr transform.position.y:" + transform.position.y);
     }
 
     public void setSpeedY(float speed)
     {
         speedY = speed;
+    }
+    public float GetSpeedY()
+    {
+        return speedY;
     }
 
     public void setBackgroundStartPosition()

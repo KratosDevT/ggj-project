@@ -46,7 +46,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 14
-  bubblePrefab: {fileID: 6504576343464750203, guid: 0292c9051aa2a3a45a5407e8a0f06fb6, type: 3}
+  hp: 0
+  radius: 0
+  invincibleTimeInSeconds: 2
+  timer: 0
+  leftBound: 0
+  rightBound: 0
+  bubblePrefab: {fileID: 7506727342967465448, guid: 92d01bb9b555dcb449b21d7a4b0edf64, type: 3}
 --- !u!135 &-1545729245524323182
 SphereCollider:
   m_ObjectHideFlags: 0

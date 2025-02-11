@@ -6,51 +6,41 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour
 {
 
-    [SerializeField]
-    private float speed = 1.0f;
-
-    //Array that contains all the bubbles (Max 10 bubbles)
+    [SerializeField] private float speed = 1.0f;
+    [SerializeField] private int hp;
+    [SerializeField] private float radius;
+    [SerializeField] private float invincibleTimeInSeconds;
+    [SerializeField] private float timer;
+    [SerializeField] private float leftBound;
+    [SerializeField] private float rightBound;
+    [SerializeField] private GameObject bubblePrefab;
     private List<GameObject> bubbles = new List<GameObject>();
-    private int numberOfBubbles = 10;
-    private Vector3[] bubblePosition = new Vector3[10];   //.GetComponent<SphereCollider>().radius;
-    private float radius = 0f;
 
 
-    //Timer to manage the collisions
-    private float timer = 0f;
-
-    private float leftBound;
-    private float rightBound;
-
-    [SerializeField]
-    private GameObject bubblePrefab;
-
-    public float GetSpeed()
+    private void Awake()
     {
-        return speed;
+        timer = invincibleTimeInSeconds;
+        radius = 2.5f * (GetComponent<SphereCollider>().radius);
+        transform.position = new Vector3(0, transform.position.y, transform.position.z);
+
+        leftBound = Camera.main.transform.position.x - (Camera.main.orthographicSize * Camera.main.aspect) + 1.0f;
+        rightBound = Camera.main.transform.position.x + (Camera.main.orthographicSize * Camera.main.aspect) - 1.0f;
     }
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        transform.position = new Vector3(0, transform.position.y, transform.position.z);
-
-        radius = 2 * (GetComponent<SphereCollider>().radius);
-
-
-        //Populate the bubbles array
-        GenerateBubbles(numberOfBubbles);
-
-        leftBound = Camera.main.transform.position.x - (Camera.main.orthographicSize * Camera.main.aspect) + 1.50f;
-        rightBound = Camera.main.transform.position.x + (Camera.main.orthographicSize * Camera.main.aspect) - 1.50f;
+        GenerateBubbles(hp);
 
     }
 
     private void Update()
     {
         if (timer > 0f)
+        {
             timer -= Time.deltaTime;
+        }
+
         float horizontalMovement = Input.GetAxis("Horizontal");
         //Character movement letf/right
         float x = transform.position.x + horizontalMovement * speed * Time.deltaTime;
@@ -58,7 +48,6 @@ public class CharacterMovement : MonoBehaviour
         transform.position = new Vector3(x, transform.position.y, transform.position.z);
 
         transform.Rotate(0, 0, speed * Time.deltaTime);
-
     }
 
     private void OnTriggerEnter(Collider other)
@@ -67,8 +56,10 @@ public class CharacterMovement : MonoBehaviour
 
         //If the timer is still going on, ignore the collision
         if (timer > 0f)
+        {
             return;
-        timer = 3;    //Invincible for timer time
+        }
+
         GameObject bubble = bubbles[bubbles.Count - 1];
 
         bubbles.Remove(bubble);
@@ -76,27 +67,34 @@ public class CharacterMovement : MonoBehaviour
 
         radiusCollider -= 0.3f;
         GetComponent<SphereCollider>().radius = radiusCollider;
-
-        //Return of the remaining HP
-        GameManager.Instance.PlayerIsHit();
+        GameManager.Instance.DamagePlayer(1);
+        timer = invincibleTimeInSeconds;
     }
 
-    public void GenerateBubbles(int howManyBubbles)
+    public void GenerateBubbles(int numberBubbles)
     {
-        //numberOfBubbles = howManyBubbles;
-        float segment = (2 * Mathf.PI) / (howManyBubbles - 1);
+        //firstBubble
+        bubbles.Add(Instantiate(bubblePrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity, transform));
 
-        for (int i = 0; i < howManyBubbles; i++)
+        //bubbles > 1
+        float segment = (2 * Mathf.PI) / (numberBubbles - 1);
+        for (int i = 1; i < numberBubbles; i++)
         {
-
             float angle = segment * (i - 1);
-
-            float x = radius * Mathf.Cos(angle) * Convert.ToInt32(i != 0);
-            float y = radius * Mathf.Sin(angle) * Convert.ToInt32(i != 0) + transform.position.y;
-
-            //All sons of the parent gameObject CharacterMovement
-            bubbles.Add(Instantiate(bubblePrefab, new Vector3(x, y, 0), Quaternion.identity, transform));
+            float x = transform.position.x + radius * Mathf.Cos(angle);
+            float y = transform.position.y + radius * Mathf.Sin(angle);
+            bubbles.Add(Instantiate(bubblePrefab, new Vector3(x, y, transform.position.z), Quaternion.identity, transform));
         }
-        GetComponent<SphereCollider>().radius = 3;
+        GetComponent<SphereCollider>().radius = numberBubbles;
+    }
+
+    public void SetHp(int playerCurrentLife)
+    {
+        hp = playerCurrentLife;
+    }
+
+    public float GetSpeed()
+    {
+        return speed;
     }
 }

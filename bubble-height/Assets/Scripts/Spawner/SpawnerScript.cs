@@ -68,7 +68,7 @@ public class SpawnerScript : MonoBehaviour
         BaseObstacle lastSpawned = null;
 
         const float characterPositionX = 0;
-        float characterVelocityX = GameManager.Instance.playerVelocityX;
+
         float obstacleVelocityY = obstacle.GetSpeed();
         float obstacleSize = obstacle.GetSize();
         float lastSpawnedSize = 0;
@@ -83,7 +83,7 @@ public class SpawnerScript : MonoBehaviour
         }
 
         float secondToReach = (transform.position.x - characterPositionX) / obstacleVelocityY;
-        float possibleDistance = characterVelocityX * secondToReach;
+        float possibleDistance = secondToReach;
         Range impossibleRange = new()
         {
             xMin = Convert.ToInt32(possibleDistance <= obstacleSize) * (characterPositionX - obstacleSize),
